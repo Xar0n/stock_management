@@ -1,23 +1,22 @@
 package Controller;
 
+import Base.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InterfaceController implements Initializable {
+public class InterfaceController extends Controller {
 
-    @FXML
-    private VBox pnItemsStorage = null;
+    //Main
     @FXML
     private Button btnMain;
 
@@ -51,51 +50,101 @@ public class InterfaceController implements Initializable {
     @FXML
     private Pane pnlMenus;
 
+    //Storage
+    @FXML
+    private Button btnViewStorage;
+
+    @FXML
+    private TextField tfIdStorage;
+
+    @FXML
+    private Button btnAddStorage;
+
+    @FXML
+    private TableColumn<?, ?> colIdStorage;
+
+    @FXML
+    private TableColumn<?, ?> colNameStorage;
+
+    @FXML
+    private TableColumn<?, ?> colAddressStorage;
+
+    @FXML
+    private TableView<?> tableStorage;
+
+    @FXML
+    private Button btnEditStorage;
+
+    @FXML
+    private Button btnDeleteStorage;
+
+    //Product
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pnlMain.setStyle("-fx-background-color : #02030A");
         pnlMain.toFront();
     }
 
-
-    public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnMain) {
+    //Переключение вкладок и занесение данных в таблицы
+    @FXML
+    public void handleClicks(ActionEvent event) {
+        if (event.getSource() == btnMain) {
             pnlMain.setStyle("-fx-background-color : #02030A");
            pnlMain.toFront();
         }
-        if (actionEvent.getSource() == btnMenus) {
+        if (event.getSource() == btnMenus) {
 
            pnlMenus.toFront();
         }
-        if (actionEvent.getSource() == btnStorage) {
-            pnItemsStorage.getChildren().clear();
-            Node[] nodes = new Node[2];
-            for (int i = 0; i < nodes.length; i++) {
-                try {
+        if (event.getSource() == btnStorage) {
 
-                    final int j = i;
-                    nodes[i] = FXMLLoader.load(getClass().getResource("../View/Item.fxml"));
-
-                    //give the items some effect
-
-                    nodes[i].setOnMouseEntered(event -> {
-                        nodes[j].setStyle("-fx-background-color : #0A0E3F");
-                    });
-                    nodes[i].setOnMouseExited(event -> {
-                        nodes[j].setStyle("-fx-background-color : #02030A");
-                    });
-                    pnItemsStorage.getChildren().add(nodes[i]);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             pnlStorage.setStyle("-fx-background-color : #02030A");
             pnlStorage.toFront();
         }
-        if (actionEvent.getSource() == btnSignout) {
+        if (event.getSource() == btnSignout) {
             Stage stage = (Stage) btnSignout.getScene().getWindow();
             stage.close();
         }
+    }
 
+    //Поиск записи в таблице
+    @FXML
+    public void handleFind(ActionEvent event) {
+
+    }
+
+    //Добавление записи в таблицу
+    @FXML
+    void handleAdd(ActionEvent event) {
+        if (event.getSource() == btnAddStorage) {
+            StorageController.createWindow(event, "Добавить ", "/View/Storage/add.fxml", true);
+        }
+    }
+
+    //Удаление записи из таблицы
+    @FXML
+    void handleDelete(ActionEvent event) {
+        if (event.getSource() == btnDeleteStorage) {
+
+        }
+    }
+
+    //Редактирование записи в таблице
+    @FXML
+    void handleEdit(ActionEvent event) {
+        if (event.getSource() == btnEditStorage) {
+
+        }
+    }
+
+    //Просмотр записи в таблице
+    @FXML
+    void handleView(ActionEvent event) {
+        if (event.getSource() == btnViewStorage) {
+
+        }
     }
 }
