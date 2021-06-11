@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="512.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StorageController">
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+   <children>
+       <TextField fx:id="tfName" layoutX="40.0" layoutY="81.0" prefHeight="27.0" prefWidth="448.0" promptText="Введите название" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; ; -fx-text-fill:#e7e5e5;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Button fx:id="btnAdd" layoutX="221.0" layoutY="226.0" mnemonicParsing="false" onAction="#add" text="Добавить">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TextField fx:id="tfAddress" layoutX="40.0" layoutY="166.0" prefHeight="27.0" prefWidth="448.0" promptText="Адрес" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-text-fill:#e7e5e5;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Label layoutX="46.0" layoutY="55.0" text="Название склада" textFill="#e7e5e5">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="46.0" layoutY="137.0" text="Адрес склада" textFill="#e7e5e5">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

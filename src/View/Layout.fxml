@@ -11,13 +11,19 @@
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-            <Label text="Cистема управления запасами" textFill="#e7e5e5">
+            <Label alignment="CENTER" prefHeight="65.0" prefWidth="256.0" style="-fx-background-color: #0d6efd;" text="Cистема управления запасами" textFill="#e7e5e5">
                <font>
                   <Font size="16.0" />
                </font>
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
             </Label>
                 <Button fx:id="btnMain" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Главная" textFill="#e7e5e5">
                     <graphic>
@@ -36,6 +42,9 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
                 </Button>
                 <Button fx:id="btnStorage" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Склады">
                     <graphic>
@@ -48,6 +57,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
                 <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Продукты">
                     <graphic>
@@ -60,6 +75,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
                 <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Покупатели">
                     <graphic>
@@ -72,6 +93,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
                 <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Поставщики">
                     <graphic>
@@ -84,6 +111,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
                 <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Настройки">
                     <graphic>
@@ -96,6 +129,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
                 <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Выход">
                     <graphic>
@@ -108,6 +147,12 @@
                     <padding>
                         <Insets left="50.0" />
                     </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
                 </Button>
             </children>
         </VBox>
@@ -117,8 +162,14 @@
                 </Pane>
                 <Pane fx:id="pnlStorage" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="btnViewStorage" layoutX="652.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Состояние запасов" />
-                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                        <Button fx:id="btnViewStorage" layoutX="652.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Состояние запасов">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
+                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; ; -fx-text-fill:#e7e5e5;">
+                     <font>
+                        <Font size="13.0" />
+                     </font></TextField>
                         <Label layoutX="57.0" layoutY="25.0" text="Склады" textFill="#e7e5e5">
                             <font>
                                 <Font size="24.0" />
@@ -129,7 +180,10 @@
                                 <Image url="@../images/icons8_Search_52px.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="btnAddStorage" layoutX="386.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить" />
+                        <Button fx:id="btnAddStorage" layoutX="386.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                         <TableView fx:id="tableStorage" layoutX="57.0" layoutY="149.0" prefHeight="316.0" prefWidth="712.0" stylesheets="@table_view.css">
                             <columns>
                                 <TableColumn fx:id="colIdStorage" prefWidth="47.0" text="#" />
@@ -137,12 +191,18 @@
                                 <TableColumn fx:id="colAddressStorage" minWidth="0.0" prefWidth="379.0" text="Адрес" />
                             </columns>
                         </TableView>
-                        <Button fx:id="btnEditStorage" layoutX="541.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать" />
-                        <Button fx:id="btnDeleteStorage" layoutX="469.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить" />
+                        <Button fx:id="btnEditStorage" layoutX="541.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
+                        <Button fx:id="btnDeleteStorage" layoutX="469.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                     </children>
                 </Pane>
 
-                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+                <Pane fx:id="pnlProduct" prefHeight="200.0" prefWidth="200.0" />
                 <Pane fx:id="pnlMain" prefHeight="554.0" prefWidth="793.0">
                     <children>
                         <Label layoutX="57.0" layoutY="25.0" text="Главная" textFill="#e7e5e5">
