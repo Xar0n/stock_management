@@ -2,9 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -115,40 +115,96 @@
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                  <Button fx:id="btnViewStorage" layoutX="638.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Состояние запасов">
-                     <font>
-                        <Font name="Ebrima" size="13.0" />
-                     </font></Button>
-                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
-                     <font>
-                        <Font name="Ebrima" size="13.0" />
-                     </font></TextField>
-                        <Label layoutX="57.0" layoutY="25.0" text="Склады" textFill="#e7e5e5">
+                        <Label layoutX="57.0" layoutY="25.0" text="Продажа" textFill="#e7e5e5">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                  <Button fx:id="btnAddStorage" layoutX="365.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                  <Label layoutX="57.0" layoutY="73.0" prefHeight="30.0" prefWidth="165.0" text="Склад" textFill="#e7e5e5">
                      <font>
-                        <Font name="Ebrima" size="13.0" />
-                     </font></Button>
-                  <TableView fx:id="tableStorage" layoutX="57.0" layoutY="149.0" prefHeight="414.0" prefWidth="712.0" stylesheets="@table_view.css">
-                    <columns>
-                      <TableColumn fx:id="colIdStorage" prefWidth="47.0" text="#" />
-                      <TableColumn fx:id="colNameStorage" prefWidth="285.0" text="Название" />
-                        <TableColumn fx:id="colAddressStorage" minWidth="0.0" prefWidth="379.0" text="Адрес" />
-                    </columns>
-                  </TableView>
-                  <Button fx:id="btnEditStorage" layoutX="522.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="cbStorageSell" layoutX="57.0" layoutY="113.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите склад" />
+                  <Label layoutX="57.0" layoutY="138.0" prefHeight="30.0" prefWidth="165.0" text="Товар" textFill="#e7e5e5">
                      <font>
-                        <Font name="Ebrima" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="btnDeleteStorage" layoutX="448.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="cbProductSell" layoutX="57.0" layoutY="178.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите товар" />
+                  <TextField fx:id="tfCountSell" layoutX="57.0" layoutY="308.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите количество товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
                      <font>
-                        <Font name="Ebrima" size="13.0" />
-                     </font></Button>
-                  <Button layoutX="86.0" layoutY="81.0" mnemonicParsing="false" text="Посмотреть закупки" />
-                  <Button layoutX="221.0" layoutY="81.0" mnemonicParsing="false" text="Посмотреть продажи" />
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="57.0" layoutY="268.0" prefHeight="30.0" prefWidth="165.0" text="Количество товара" textFill="#e7e5e5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="dateSell" layoutX="58.0" layoutY="452.0" />
+                  <Label layoutX="57.0" layoutY="412.0" prefHeight="30.0" prefWidth="165.0" text="Дата продажи" textFill="#e7e5e5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="btnSell" layoutX="58.0" layoutY="497.0" mnemonicParsing="false" onAction="#handleSell" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Закупить">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="tfPriceSell" layoutX="57.0" layoutY="380.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите цену за единицу товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="57.0" layoutY="340.0" prefHeight="30.0" prefWidth="165.0" text="Цена за единицу товара" textFill="#e7e5e5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="cbSupplierSell" layoutX="57.0" layoutY="243.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите покупателя" />
+                  <Label layoutX="57.0" layoutY="203.0" prefHeight="30.0" prefWidth="165.0" text="Покупатель" textFill="#e7e5e5">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
                     </children>
                 </Pane>
 

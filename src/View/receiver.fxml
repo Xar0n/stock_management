@@ -115,28 +115,34 @@
             <children>
                 <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                  <Button fx:id="btnViewStorage" layoutX="652.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Состояние запасов" />
-                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                        <Label layoutX="57.0" layoutY="25.0" text="Склады" textFill="#e7e5e5">
+                        <TextField fx:id="tfIdReceiver" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                     <font>
+                        <Font name="Ebrima" size="13.0" />
+                     </font></TextField>
+                        <Label layoutX="57.0" layoutY="25.0" text="Поставщик" textFill="#e7e5e5">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                        <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/icons8_Search_52px.png" />
-                            </image>
-                        </ImageView>
-                  <Button fx:id="btnAddStorage" layoutX="386.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить" />
-                  <TableView fx:id="tableStorage" layoutX="57.0" layoutY="149.0" prefHeight="316.0" prefWidth="712.0" stylesheets="@table_view.css">
+                  <Button fx:id="btnAddReceiver" layoutX="506.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                     <font>
+                        <Font name="Ebrima" size="13.0" />
+                     </font></Button>
+                  <TableView fx:id="tableReceiver" layoutX="57.0" layoutY="149.0" prefHeight="414.0" prefWidth="712.0" stylesheets="@table_view.css">
                     <columns>
-                      <TableColumn fx:id="colIdStorage" prefWidth="47.0" text="#" />
-                      <TableColumn fx:id="colNameStorage" prefWidth="285.0" text="Название" />
-                        <TableColumn fx:id="colAddressStorage" minWidth="0.0" prefWidth="379.0" text="Адрес" />
+                      <TableColumn fx:id="colIdReceiver" prefWidth="47.0" text="#" />
+                      <TableColumn fx:id="colNameReceiver" prefWidth="285.0" text="Название" />
+                        <TableColumn fx:id="colAddressReceiver" minWidth="0.0" prefWidth="379.0" text="Адрес" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btnEditStorage" layoutX="541.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать" />
-                  <Button fx:id="btnDeleteStorage" layoutX="469.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить" />
+                  <Button fx:id="btnEditReceiver" layoutX="666.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                     <font>
+                        <Font name="Ebrima" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="btnDeleteReceiver" layoutX="590.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                     <font>
+                        <Font name="Ebrima" size="13.0" />
+                     </font></Button>
                     </children>
                 </Pane>
 
