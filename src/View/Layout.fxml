@@ -164,7 +164,7 @@
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></TextField>
-                        <Label layoutX="57.0" layoutY="25.0" text="Покупатель" textFill="#e7e5e5">
+                        <Label layoutX="57.0" layoutY="25.0" text="Покупатели" textFill="#e7e5e5">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -239,7 +239,7 @@
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></TextField>
-                        <Label layoutX="57.0" layoutY="25.0" text="Поставщик" textFill="#e7e5e5">
+                        <Label layoutX="57.0" layoutY="25.0" text="Поставщики" textFill="#e7e5e5">
                             <font>
                                 <Font size="24.0" />
                             </font>
