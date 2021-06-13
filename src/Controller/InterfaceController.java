@@ -83,6 +83,12 @@ public class InterfaceController extends Controller {
     @FXML
     private Button btnDeleteStorage;
 
+    @FXML
+    private Button btnViewBuy;
+
+    @FXML
+    private Button btnViewSell;
+
 
     //Buy
     @FXML
@@ -215,8 +221,8 @@ public class InterfaceController extends Controller {
             //cbStorageSell
             //cbProductSell
             //cbSupplierSell
-            String count = tfCountSell.getText();
-            String price = tfPriceSell.getText();
+            int count = Integer.parseInt(tfCountSell.getText());
+            double price = Double.parseDouble(tfPriceSell.getText());
             LocalDate date = dateSell.getValue();
         }
     }
@@ -227,13 +233,13 @@ public class InterfaceController extends Controller {
             //cbStorageN
             //cbReceiverN
             String name = tfNameN.getText();
-            String count = tfCountPN.getText();
-            String price = tfPriceN.getText();
+            int count = Integer.parseInt(tfCountPN.getText());
+            double price = Double.parseDouble(tfPriceN.getText());
             LocalDate date = dateBuyN.getValue();
         } else if (event.getSource() == btnBuyExist) {
             //cbStorageE
             //cbProductE
-            String count = tfCountPE.getText();
+            int count = Integer.parseInt(tfCountPE.getText());
             LocalDate date = dateBuyE.getValue();
         }
 
@@ -310,11 +316,14 @@ public class InterfaceController extends Controller {
     @FXML
     void handleDelete(ActionEvent event) {
         if (event.getSource() == btnDeleteStorage) {
-            String id = tfIdStorage.getText();
+            int id = Integer.parseInt(tfIdStorage.getText());
+
         } else if (event.getSource() == btnDeleteReceiver) {
-            String id = tfIdReceiver.getText();
+            int id = Integer.parseInt(tfIdReceiver.getText());
+
         } else if (event.getSource() == btnDeleteSupplier) {
-            String id = tfIdSupplier.getText();
+            int id = Integer.parseInt(tfIdSupplier.getText());
+
         }
     }
 
@@ -322,11 +331,17 @@ public class InterfaceController extends Controller {
     @FXML
     void handleEdit(ActionEvent event) {
         if (event.getSource() == btnEditStorage) {
+            int id = Integer.parseInt(tfIdStorage.getText());
 
+            StorageController.createWindow(event, "Редактировать склад", "/View/Storage/edit.fxml", true);
         } else if (event.getSource() == btnEditReceiver) {
+            int id = Integer.parseInt(tfIdReceiver.getText());
 
+            ReceiverController.createWindow(event, "Редактировать поставщика", "/View/Receiver/edit.fxml", true);
         } else if (event.getSource() == btnEditSupplier) {
+            int id = Integer.parseInt(tfIdSupplier.getText());
 
+            SupplierController.createWindow(event, "Редактировать покупателя", "/View/Supplier/edit.fxml", true);
         }
     }
 

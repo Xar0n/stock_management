@@ -28,6 +28,11 @@ public class StorageController extends Controller {
 
     }
 
+    @FXML
+    void edit(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

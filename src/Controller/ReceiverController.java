@@ -23,6 +23,12 @@ public class ReceiverController extends Controller {
     void add(ActionEvent event) {
 
     }
+
+    @FXML
+    void edit(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

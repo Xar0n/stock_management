@@ -24,6 +24,11 @@ public class SupplierController extends Controller {
 
     }
 
+    @FXML
+    void edit(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

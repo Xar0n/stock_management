@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -205,6 +206,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
+                  <Spinner editable="true" layoutX="327.0" layoutY="311.0" prefHeight="27.0" prefWidth="216.0" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;" />
                     </children>
                 </Pane>
 
