@@ -1,22 +1,15 @@
-package Controllers;
+package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
-import POJO.Receve;
+import POJO.Recevier;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageReceve extends ControllerHIbernate {
+public class ManageRecevier extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -29,30 +22,28 @@ public class ManageReceve extends ControllerHIbernate {
 //            System.err.println("Failed to create sessionFactory object." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }
+//        ManageRecevier MR = new ManageRecevier();
+//        MR.addRecevier("Рога и копыта","Ивана-Крузерштерна 25");
+//        MR.addRecevier("Рога и неокопыта","Москва Пожарски 28");
 //
-//       //TODO починить дату ниче не работает
-//        LocalDate date = LocalDate.of(2015,12,25);
-//        ManageReceve MR = new ManageReceve();
-//        MR.addReceve(1,1,100,date,1);
-//       // MR.addReceve(3,3,200,date,1);
-//        //MR.listReceve();
+//        MR.listRecevier();
 //
-//        //MR.updateReceve(3,300);
+//        MR.updateRecevier(1,"Сатана и другие");
+//        MR.deleteRecevier(2);
 //
-//        //MR.deleteReceve(2);
-//
-//        MR.listReceve();
+//        MR.listRecevier();
 //    }
 
-    // Добавление поставщиов
-    public Integer addReceve(int id_reciver, int id_js, int ammount_rec, LocalDate date_rec, int processed){
+    /* Method to CREATE an employee in the database */
+    public Integer addRecevier( String name_recev, String address_recev){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer id_receve = null;
+        Integer id_recevier = null;
+
         try {
             tx = session.beginTransaction();
-            Receve receve = new Receve(id_reciver,id_js,ammount_rec,Date.from(date_rec.atStartOfDay(ZoneId.systemDefault()).toInstant()),processed);
-            id_receve = (Integer) session.save(receve);
+            Recevier recevier = new Recevier(name_recev,address_recev);
+            id_recevier = (Integer) session.save(recevier);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -60,20 +51,20 @@ public class ManageReceve extends ControllerHIbernate {
         } finally {
             session.close();
         }
-        return id_receve;
+        return id_recevier;
     }
 
     /* Method to  READ all the employees */
-    public void listReceve( ){
+    public void listRecevier( ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List receve = session.createQuery("FROM Receve").list();
-            for (Iterator iterator = receve.iterator(); iterator.hasNext();){
-                Receve receves = (Receve) iterator.next();
-                System.out.println(receves.getAmmount_rec());
+            List recevier = session.createQuery("FROM Recevier").list();
+            for (Iterator iterator = recevier.iterator(); iterator.hasNext();){
+                Recevier receviers = (Recevier) iterator.next();
+                System.out.println(receviers.getName_recev());
                 //TODO добавить вывод если нужно будет
             }
             tx.commit();
@@ -86,15 +77,15 @@ public class ManageReceve extends ControllerHIbernate {
     }
 
     /* Method to UPDATE salary for an employee */
-    public void updateReceve(Integer receve_id, int ammount_rec ){
+    public void updateRecevier(Integer recevier_id, String name_recev ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Receve receve = (Receve) session.get(Receve.class, receve_id);
-            receve.setAmmount_rec(ammount_rec);
-            session.update(receve);
+            Recevier recevier = (Recevier) session.get(Recevier.class, recevier_id);
+            recevier.setName_recev(name_recev);
+            session.update(recevier);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -105,14 +96,14 @@ public class ManageReceve extends ControllerHIbernate {
     }
 
     /* Method to DELETE an employee from the records */
-    public void deleteReceve(Integer Receve_ID){
+    public void deleteRecevier(Integer Recevier_ID){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Receve receve = (Receve) session.get(Receve.class, Receve_ID);
-            session.delete(receve);
+            Recevier recevier = (Recevier) session.get(Recevier.class, Recevier_ID);
+            session.delete(recevier);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -122,6 +113,6 @@ public class ManageReceve extends ControllerHIbernate {
         }
     }
 
-    public ManageReceve() {
+    public ManageRecevier() {
     }
 }

@@ -1,16 +1,21 @@
-package Controllers;
+package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
-import POJO.Product;
+import POJO.Receve;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageProduct extends ControllerHIbernate {
+public class ManageReceve extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -23,26 +28,30 @@ public class ManageProduct extends ControllerHIbernate {
 //            System.err.println("Failed to create sessionFactory object." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }
-//        ManageProduct MP = new ManageProduct();
-//        MP.addProduct("Рыба");
-//        MP.addProduct("Карты");
-//        MP.addProduct("Два ствола");
 //
-//        MP.deleteProduct(2);
-//        MP.updateStorages_jor(1,"Деньги");
-//        MP.listProduct();
+//       //TODO починить дату ниче не работает
+//        LocalDate date = LocalDate.of(2015,12,25);
+//        ManageReceve MR = new ManageReceve();
+//        MR.addReceve(1,1,100,date,1);
+//       // MR.addReceve(3,3,200,date,1);
+//        //MR.listReceve();
+//
+//        //MR.updateReceve(3,300);
+//
+//        //MR.deleteReceve(2);
+//
+//        MR.listReceve();
 //    }
 
-    /* Method to CREATE an employee in the database */
-    public Integer addProduct( String name_prod){
+    // Добавление поставщиов
+    public Integer addReceve(int id_reciver, int id_js, int ammount_rec, LocalDate date_rec, int processed){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer product_id = null;
-
+        Integer id_receve = null;
         try {
             tx = session.beginTransaction();
-            Product product = new Product(name_prod);
-            product_id = (Integer) session.save(product);
+            Receve receve = new Receve(id_reciver,id_js,ammount_rec,Date.from(date_rec.atStartOfDay(ZoneId.systemDefault()).toInstant()),processed);
+            id_receve = (Integer) session.save(receve);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -50,20 +59,20 @@ public class ManageProduct extends ControllerHIbernate {
         } finally {
             session.close();
         }
-        return product_id;
+        return id_receve;
     }
 
     /* Method to  READ all the employees */
-    public void listProduct( ){
+    public void listReceve( ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List product = session.createQuery("FROM Product").list();
-            for (Iterator iterator = product.iterator(); iterator.hasNext();){
-                Product products = (Product) iterator.next();
-                System.out.println(products.getName_prod());
+            List receve = session.createQuery("FROM Receve").list();
+            for (Iterator iterator = receve.iterator(); iterator.hasNext();){
+                Receve receves = (Receve) iterator.next();
+                System.out.println(receves.getAmmount_rec());
                 //TODO добавить вывод если нужно будет
             }
             tx.commit();
@@ -76,15 +85,15 @@ public class ManageProduct extends ControllerHIbernate {
     }
 
     /* Method to UPDATE salary for an employee */
-    public void updateProduct(Integer Product_id, String name_prod ){
+    public void updateReceve(Integer receve_id, int ammount_rec ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Product product = (Product) session.get(Product.class, Product_id);
-            product.setName_prod(name_prod);
-            session.update(product);
+            Receve receve = (Receve) session.get(Receve.class, receve_id);
+            receve.setAmmount_rec(ammount_rec);
+            session.update(receve);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -95,14 +104,14 @@ public class ManageProduct extends ControllerHIbernate {
     }
 
     /* Method to DELETE an employee from the records */
-    public void deleteProduct(Integer Product_ID){
+    public void deleteReceve(Integer Receve_ID){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Product product = (Product) session.get(Product.class, Product_ID);
-            session.delete(product);
+            Receve receve = (Receve) session.get(Receve.class, Receve_ID);
+            session.delete(receve);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -112,7 +121,6 @@ public class ManageProduct extends ControllerHIbernate {
         }
     }
 
-    public ManageProduct() {
+    public ManageReceve() {
     }
 }
-

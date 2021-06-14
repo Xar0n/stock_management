@@ -1,6 +1,5 @@
 package Base;
 
-import Controllers.ManageRecevier;
 import org.hibernate.SessionFactory;
 
 public abstract class ControllerHIbernate {

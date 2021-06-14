@@ -1,4 +1,4 @@
-package Controller;
+package ControllersFX;
 
 import Base.ControllerFX;
 import javafx.event.ActionEvent;
@@ -330,15 +330,15 @@ public class InterfaceController extends ControllerFX {
     void handleEdit(ActionEvent event) {
         if (event.getSource() == btnEditStorage) {
             int id = Integer.parseInt(tfIdStorage.getText());
-
+            StorageController.setId(id);
             StorageController.createWindow(event, "Редактировать склад", "/View/Storage/edit.fxml", true);
         } else if (event.getSource() == btnEditReceiver) {
             int id = Integer.parseInt(tfIdReceiver.getText());
-
+            ReceiverController.setId(id);
             ReceiverController.createWindow(event, "Редактировать поставщика", "/View/Receiver/edit.fxml", true);
         } else if (event.getSource() == btnEditSupplier) {
             int id = Integer.parseInt(tfIdSupplier.getText());
-
+            SupplierController.setId(id);
             SupplierController.createWindow(event, "Редактировать покупателя", "/View/Supplier/edit.fxml", true);
         }
     }

@@ -1,16 +1,15 @@
-package Controllers;
+package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
-import POJO.Recevier;
+import POJO.Product;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageRecevier extends ControllerHIbernate {
+public class ManageProduct extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -23,28 +22,26 @@ public class ManageRecevier extends ControllerHIbernate {
 //            System.err.println("Failed to create sessionFactory object." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }
-//        ManageRecevier MR = new ManageRecevier();
-//        MR.addRecevier("Рога и копыта","Ивана-Крузерштерна 25");
-//        MR.addRecevier("Рога и неокопыта","Москва Пожарски 28");
+//        ManageProduct MP = new ManageProduct();
+//        MP.addProduct("Рыба");
+//        MP.addProduct("Карты");
+//        MP.addProduct("Два ствола");
 //
-//        MR.listRecevier();
-//
-//        MR.updateRecevier(1,"Сатана и другие");
-//        MR.deleteRecevier(2);
-//
-//        MR.listRecevier();
+//        MP.deleteProduct(2);
+//        MP.updateStorages_jor(1,"Деньги");
+//        MP.listProduct();
 //    }
 
     /* Method to CREATE an employee in the database */
-    public Integer addRecevier( String name_recev, String address_recev){
+    public Integer addProduct( String name_prod){
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer id_recevier = null;
+        Integer product_id = null;
 
         try {
             tx = session.beginTransaction();
-            Recevier recevier = new Recevier(name_recev,address_recev);
-            id_recevier = (Integer) session.save(recevier);
+            Product product = new Product(name_prod);
+            product_id = (Integer) session.save(product);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -52,20 +49,20 @@ public class ManageRecevier extends ControllerHIbernate {
         } finally {
             session.close();
         }
-        return id_recevier;
+        return product_id;
     }
 
     /* Method to  READ all the employees */
-    public void listRecevier( ){
+    public void listProduct( ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List recevier = session.createQuery("FROM Recevier").list();
-            for (Iterator iterator = recevier.iterator(); iterator.hasNext();){
-                Recevier receviers = (Recevier) iterator.next();
-                System.out.println(receviers.getName_recev());
+            List product = session.createQuery("FROM Product").list();
+            for (Iterator iterator = product.iterator(); iterator.hasNext();){
+                Product products = (Product) iterator.next();
+                System.out.println(products.getName_prod());
                 //TODO добавить вывод если нужно будет
             }
             tx.commit();
@@ -78,15 +75,15 @@ public class ManageRecevier extends ControllerHIbernate {
     }
 
     /* Method to UPDATE salary for an employee */
-    public void updateRecevier(Integer recevier_id, String name_recev ){
+    public void updateProduct(Integer Product_id, String name_prod ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Recevier recevier = (Recevier) session.get(Recevier.class, recevier_id);
-            recevier.setName_recev(name_recev);
-            session.update(recevier);
+            Product product = (Product) session.get(Product.class, Product_id);
+            product.setName_prod(name_prod);
+            session.update(product);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -97,14 +94,14 @@ public class ManageRecevier extends ControllerHIbernate {
     }
 
     /* Method to DELETE an employee from the records */
-    public void deleteRecevier(Integer Recevier_ID){
+    public void deleteProduct(Integer Product_ID){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            Recevier recevier = (Recevier) session.get(Recevier.class, Recevier_ID);
-            session.delete(recevier);
+            Product product = (Product) session.get(Product.class, Product_ID);
+            session.delete(product);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -114,6 +111,7 @@ public class ManageRecevier extends ControllerHIbernate {
         }
     }
 
-    public ManageRecevier() {
+    public ManageProduct() {
     }
 }
+
