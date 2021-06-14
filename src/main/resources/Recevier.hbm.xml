@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "POJO.Recevier" table = "receiver">
+
+        <meta attribute = "class-description">
+            This class contains the storage detail.
+        </meta>
+
+        <id name = "id_recevier" type = "int" column = "id_recevier">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name_recev" column = "name_recev" type = "string"/>
+        <property name = "address_recev" column = "address_recev" type = "string"/>
+
+    </class>
+</hibernate-mapping>

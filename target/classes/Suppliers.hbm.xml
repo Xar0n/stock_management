@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "POJO.Suppliers" table = "suppliers">
+
+        <meta attribute = "class-description">
+            This class contains the storage detail.
+        </meta>
+
+        <id name = "id_suppliers" type = "int" column = "id_suppliers">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name_sup" column = "name_sup" type = "string"/>
+        <property name = "address_sup" column = "address_sup" type = "string"/>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "POJO.Storage_jor" table = "storage_jor">
+
+        <meta attribute = "class-description">
+            This class contains the storage detail.
+        </meta>
+
+        <id name = "id_sj" type = "int" column = "id_sj">
+            <generator class="native"/>
+        </id>
+
+        <property name = "id_product" column = "id_product" type = "int"/>
+        <property name = "id_storage" column = "id_storage" type = "int"/>
+        <property name = "amount" column = "amount" type = "int"/>
+        <property name = "price_in_sup" column = "price_in_sup" type = "float"/>
+        <property name = "price_in_sale" column = "price_in_sale" type = "float"/>
+
+    </class>
+</hibernate-mapping>
