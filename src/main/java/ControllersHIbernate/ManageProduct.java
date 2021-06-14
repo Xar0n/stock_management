@@ -2,6 +2,9 @@ package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
 import POJO.Product;
+import POJO.Receve;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -68,6 +71,27 @@ public class ManageProduct extends ControllerHIbernate {
         } finally {
             session.close();
         }
+    }
+
+    //Данные для таблички продуктов
+    public ObservableList<Product> selectAll( ){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Product> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List product = session.createQuery("FROM Product").list();
+            for (Iterator iterator = product.iterator(); iterator.hasNext();){
+                list.add((Product) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     //Обновление продуктов
