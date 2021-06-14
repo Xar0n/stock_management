@@ -1,6 +1,6 @@
 package POJO;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Supply {
     private int id_supply;
