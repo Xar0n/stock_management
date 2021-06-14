@@ -1,4 +1,4 @@
-package Controller;
+package ControllersFX;
 
 import Base.ControllerFX;
 import javafx.event.ActionEvent;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SupplierController extends ControllerFX {
+public class ReceiverController extends ControllerFX {
     @FXML
     private TextField tfName;
 
@@ -18,6 +18,7 @@ public class SupplierController extends ControllerFX {
 
     @FXML
     private TextField tfAddress;
+    private static int id;
 
     @FXML
     void add(ActionEvent event) {
@@ -34,5 +35,7 @@ public class SupplierController extends ControllerFX {
 
     }
 
-
+    public static void setId(int id) {
+        ReceiverController.id = id;
+    }
 }

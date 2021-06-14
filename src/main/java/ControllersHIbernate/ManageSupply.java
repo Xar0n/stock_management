@@ -1,4 +1,4 @@
-package Controllers;
+package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
 

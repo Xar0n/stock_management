@@ -1,7 +1,6 @@
-package Controller;
+package ControllersFX;
 
 import Base.ControllerFX;
-import Controllers.ManageStorage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,8 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-public class StorageController extends ControllerFX {
+public class SupplierController extends ControllerFX {
     @FXML
     private TextField tfName;
 
@@ -20,13 +18,11 @@ public class StorageController extends ControllerFX {
 
     @FXML
     private TextField tfAddress;
+    private static int id;
 
     @FXML
     void add(ActionEvent event) {
-        String name = tfName.getText();
-        String address = tfAddress.getText();
-        ManageStorage storage_model = new ManageStorage();
-        storage_model.addStorage(name, address);
+
     }
 
     @FXML
@@ -38,6 +34,10 @@ public class StorageController extends ControllerFX {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    public static void setId(int id) {
+        SupplierController.id = id;
+    }
+
+
 }
-
-

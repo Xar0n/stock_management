@@ -1,8 +1,6 @@
 package manage_stocks;
 
 import Base.ControllerHIbernate;
-import Controllers.ManageProduct;
-import Controllers.ManageStorage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
