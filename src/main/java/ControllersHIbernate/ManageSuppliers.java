@@ -1,7 +1,10 @@
 package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
+import POJO.Storage;
 import POJO.Suppliers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -76,6 +79,26 @@ public class ManageSuppliers extends ControllerHIbernate {
         } finally {
             session.close();
         }
+    }
+
+    public ObservableList<Suppliers> selectAll() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Suppliers> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List suppliers = session.createQuery("FROM Suppliers").list();
+            for (Iterator iterator = suppliers.iterator(); iterator.hasNext();){
+                list.add((Suppliers) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     /* Method to UPDATE salary for an employee */
