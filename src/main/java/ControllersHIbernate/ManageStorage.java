@@ -2,6 +2,8 @@ package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
 import POJO.Storage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ManageStorage extends ControllerHIbernate {
+
     /* Method to CREATE an employee in the database */
     public Integer addStorage(String name, String address){
         Session session = factory.openSession();
@@ -50,6 +53,26 @@ public class ManageStorage extends ControllerHIbernate {
         } finally {
             session.close();
         }
+    }
+
+    public ObservableList<Storage> selectAll() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Storage> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List storages = session.createQuery("FROM Storage").list();
+            for (Iterator iterator = storages.iterator(); iterator.hasNext();){
+                list.add((Storage) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     /* Method to UPDATE salary for an employee */
