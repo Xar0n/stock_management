@@ -4,7 +4,9 @@ import Base.ControllerFX;
 import ControllersHIbernate.ManageRecevier;
 import ControllersHIbernate.ManageStorage;
 import ControllersHIbernate.ManageSuppliers;
+import POJO.Recevier;
 import POJO.Storage;
+import POJO.Suppliers;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -166,16 +168,16 @@ public class InterfaceController extends ControllerFX {
     private Button btnAddSupplier;
 
     @FXML
-    private TableView<?> tableSupplier;
+    private TableView<Suppliers> tableSupplier;
 
     @FXML
-    private TableColumn<?, ?> colIdSupplier;
+    private TableColumn<Suppliers, Integer> colIdSupplier;
 
     @FXML
-    private TableColumn<?, ?> colNameSupplier;
+    private TableColumn<Suppliers, String> colNameSupplier;
 
     @FXML
-    private TableColumn<?, ?> colAddressSupplier;
+    private TableColumn<Suppliers, String> colAddressSupplier;
 
     @FXML
     private Button btnEditSupplier;
@@ -192,16 +194,16 @@ public class InterfaceController extends ControllerFX {
     private Button btnAddReceiver;
 
     @FXML
-    private TableView<?> tableReceiver;
+    private TableView<Recevier> tableReceiver;
 
     @FXML
-    private TableColumn<?, ?> colIdReceiver;
+    private TableColumn<Recevier, Integer> colIdReceiver;
 
     @FXML
-    private TableColumn<?, ?> colNameReceiver;
+    private TableColumn<Recevier, String> colNameReceiver;
 
     @FXML
-    private TableColumn<?, ?> colAddressReceiver;
+    private TableColumn<Recevier, String> colAddressReceiver;
 
     @FXML
     private Button btnEditReceiver;
@@ -215,6 +217,8 @@ public class InterfaceController extends ControllerFX {
     ManageRecevier receiver_model;
     ManageSuppliers supplier_model;
     ObservableList<Storage> storages;
+    ObservableList<Recevier> receivers;
+    ObservableList<Suppliers> suppliers;
 
 
     @Override
@@ -227,6 +231,12 @@ public class InterfaceController extends ControllerFX {
         colIdStorage.setCellValueFactory(new PropertyValueFactory<Storage,Integer>("id_storage"));
         colNameStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("name"));
         colAddressStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("address"));
+        colIdReceiver.setCellValueFactory(new PropertyValueFactory<Recevier,Integer>("id_recevier"));
+        colNameReceiver.setCellValueFactory(new PropertyValueFactory<Recevier, String>("name_recev"));
+        colAddressReceiver.setCellValueFactory(new PropertyValueFactory<Recevier, String>("address_recev"));
+        colIdSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers,Integer>("id_suppliers"));
+        colNameSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers, String>("name_sup"));
+        colAddressSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers, String>("address_sup"));
     }
 
 
@@ -272,17 +282,13 @@ public class InterfaceController extends ControllerFX {
             pnlStorage.setStyle(backgroundColor);
             pnlStorage.toFront();
         } else if (event.getSource() == btnSupplier) {
-
-
-
-
+            suppliers = supplier_model.selectAll();
+            tableSupplier.setItems(suppliers);
             pnlSupplier.setStyle(backgroundColor);
             pnlSupplier.toFront();
         } else if (event.getSource() == btnReceiver) {
-
-
-
-
+            receivers = receiver_model.selectAll();
+            tableReceiver.setItems(receivers);
             pnlReceiver.setStyle(backgroundColor);
             pnlReceiver.toFront();
         } else if (event.getSource() == btnBuyPage) {
@@ -331,13 +337,13 @@ public class InterfaceController extends ControllerFX {
     void handleDelete(ActionEvent event) {
         if (event.getSource() == btnDeleteStorage) {
             int id = Integer.parseInt(tfIdStorage.getText());
-
+            storage_model.deleteStorage(id);
         } else if (event.getSource() == btnDeleteReceiver) {
             int id = Integer.parseInt(tfIdReceiver.getText());
-
+            receiver_model.deleteRecevier(id);
         } else if (event.getSource() == btnDeleteSupplier) {
             int id = Integer.parseInt(tfIdSupplier.getText());
-
+            supplier_model.deleteSuppliers(id);
         }
     }
 

@@ -2,6 +2,9 @@ package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
 import POJO.Recevier;
+import POJO.Storage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -74,6 +77,26 @@ public class ManageRecevier extends ControllerHIbernate {
         } finally {
             session.close();
         }
+    }
+
+    public ObservableList<Recevier> selectAll() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Recevier> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List recevier = session.createQuery("FROM Recevier").list();
+            for (Iterator iterator = recevier.iterator(); iterator.hasNext();){
+                list.add((Recevier) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     /* Method to UPDATE salary for an employee */
