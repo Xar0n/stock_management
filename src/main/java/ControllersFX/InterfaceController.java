@@ -220,6 +220,20 @@ public class InterfaceController extends ControllerFX {
     ObservableList<Recevier> receivers;
     ObservableList<Suppliers> suppliers;
 
+    public void updateTableStorage() {
+        storages = storage_model.selectAll();
+        tableStorage.setItems(storages);
+    }
+
+    public void updateTableReceivers() {
+        receivers = receiver_model.selectAll();
+        tableReceiver.setItems(receivers);
+    }
+
+    public void updateTableSuppliers() {
+        suppliers = supplier_model.selectAll();
+        tableSupplier.setItems(suppliers);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -277,18 +291,15 @@ public class InterfaceController extends ControllerFX {
             pnlMain.setStyle(backgroundColor);
             pnlMain.toFront();
         } else if (event.getSource() == btnStorage) {
-            storages = storage_model.selectAll();
-            tableStorage.setItems(storages);
+            updateTableStorage();
             pnlStorage.setStyle(backgroundColor);
             pnlStorage.toFront();
         } else if (event.getSource() == btnSupplier) {
-            suppliers = supplier_model.selectAll();
-            tableSupplier.setItems(suppliers);
+            updateTableSuppliers();
             pnlSupplier.setStyle(backgroundColor);
             pnlSupplier.toFront();
         } else if (event.getSource() == btnReceiver) {
-            receivers = receiver_model.selectAll();
-            tableReceiver.setItems(receivers);
+            updateTableReceivers();
             pnlReceiver.setStyle(backgroundColor);
             pnlReceiver.toFront();
         } else if (event.getSource() == btnBuyPage) {
@@ -296,17 +307,12 @@ public class InterfaceController extends ControllerFX {
             cbReceiverN.valueProperty().set(null);
             cbStorageE.valueProperty().set(null);
             cbProductE.valueProperty().set(null);
-
-
             pnlBuy.setStyle(backgroundColor);
             pnlBuy.toFront();
         } else if (event.getSource() == btnSellPage) {
             cbStorageSell.valueProperty().set(null);
             cbProductSell.valueProperty().set(null);
             cbSupplierSell.valueProperty().set(null);
-
-
-
             pnlSell.setStyle(backgroundColor);
             pnlSell.toFront();
         } else if (event.getSource() == btnSignout) {
@@ -324,10 +330,13 @@ public class InterfaceController extends ControllerFX {
     @FXML
     void handleAdd(ActionEvent event) {
         if (event.getSource() == btnAddStorage) {
+            StorageController.setController(this);
             StorageController.createWindow(event, "Добавить склад", "/View/Storage/add.fxml", true);
         } else if (event.getSource() == btnAddSupplier) {
+            SupplierController.setController(this);
             SupplierController.createWindow(event, "Добавить покупателя", "/View/Supplier/add.fxml", true);
         } else if (event.getSource() == btnAddReceiver) {
+            ReceiverController.setController(this);
             ReceiverController.createWindow(event, "Добавить поставщика", "/View/Receiver/add.fxml", true);
         }
     }
@@ -338,12 +347,15 @@ public class InterfaceController extends ControllerFX {
         if (event.getSource() == btnDeleteStorage) {
             int id = Integer.parseInt(tfIdStorage.getText());
             storage_model.deleteStorage(id);
+            updateTableStorage();
         } else if (event.getSource() == btnDeleteReceiver) {
             int id = Integer.parseInt(tfIdReceiver.getText());
             receiver_model.deleteRecevier(id);
+            updateTableReceivers();
         } else if (event.getSource() == btnDeleteSupplier) {
             int id = Integer.parseInt(tfIdSupplier.getText());
             supplier_model.deleteSuppliers(id);
+            updateTableSuppliers();
         }
     }
 
@@ -353,14 +365,17 @@ public class InterfaceController extends ControllerFX {
         if (event.getSource() == btnEditStorage) {
             int id = Integer.parseInt(tfIdStorage.getText());
             StorageController.setId(id);
+            StorageController.setController(this);
             StorageController.createWindow(event, "Редактировать склад", "/View/Storage/edit.fxml", true);
         } else if (event.getSource() == btnEditReceiver) {
             int id = Integer.parseInt(tfIdReceiver.getText());
             ReceiverController.setId(id);
+            ReceiverController.setController(this);
             ReceiverController.createWindow(event, "Редактировать поставщика", "/View/Receiver/edit.fxml", true);
         } else if (event.getSource() == btnEditSupplier) {
             int id = Integer.parseInt(tfIdSupplier.getText());
             SupplierController.setId(id);
+            SupplierController.setController(this);
             SupplierController.createWindow(event, "Редактировать покупателя", "/View/Supplier/edit.fxml", true);
         }
     }

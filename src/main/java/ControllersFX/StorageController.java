@@ -23,12 +23,14 @@ public class StorageController extends ControllerFX {
 
     private ManageStorage storage_model;
     private static int id;
+    private static InterfaceController interfaceController;
 
     @FXML
     void add(ActionEvent event) {
         String name = tfName.getText();
         String address = tfAddress.getText();
         storage_model.addStorage(name, address);
+        interfaceController.updateTableStorage();
     }
 
     @FXML
@@ -45,6 +47,10 @@ public class StorageController extends ControllerFX {
 
     public static void setId(int id) {
         StorageController.id = id;
+    }
+
+    public static void setController(InterfaceController interfaceController) {
+        StorageController.interfaceController = interfaceController;
     }
 }
 
