@@ -16,34 +16,23 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ManageReceve extends ControllerHIbernate {
-//    public static void main(String[] args) { //:TODO удалить тестовый блок
-//
-//        try {
-//            Configuration configuration = new Configuration();
-//            configuration.configure();
-//            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(
-//                    configuration.getProperties()). buildServiceRegistry();
-//            factory = configuration.buildSessionFactory(serviceRegistry);
-//        } catch (Throwable ex) {
-//            System.err.println("Failed to create sessionFactory object." + ex);
-//            throw new ExceptionInInitializerError(ex);
-//        }
-//
-//       //TODO починить дату ниче не работает
-//        LocalDate date = LocalDate.of(2015,12,25);
-//        ManageReceve MR = new ManageReceve();
-//        MR.addReceve(1,1,100,date,1);
-//       // MR.addReceve(3,3,200,date,1);
-//        //MR.listReceve();
-//
-//        //MR.updateReceve(3,300);
-//
-//        //MR.deleteReceve(2);
-//
-//        MR.listReceve();
-//    }
+    public static void main(String[] args) { //:TODO удалить тестовый блок
 
-    // Добавление поставщиов
+        try {
+            Configuration configuration = new Configuration();
+            configuration.configure();
+            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(
+                    configuration.getProperties()). buildServiceRegistry();
+            factory = configuration.buildSessionFactory(serviceRegistry);
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+
+
+    }
+
+    // Добавление покупателей
     public Integer addReceve(int id_reciver, int id_js, int ammount_rec, LocalDate date_rec, int processed){
         Session session = factory.openSession();
         Transaction tx = null;

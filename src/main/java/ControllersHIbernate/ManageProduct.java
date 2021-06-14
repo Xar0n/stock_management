@@ -5,6 +5,9 @@ import POJO.Product;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 import java.util.Iterator;
 import java.util.List;
@@ -22,17 +25,10 @@ public class ManageProduct extends ControllerHIbernate {
 //            System.err.println("Failed to create sessionFactory object." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }
-//        ManageProduct MP = new ManageProduct();
-//        MP.addProduct("Рыба");
-//        MP.addProduct("Карты");
-//        MP.addProduct("Два ствола");
 //
-//        MP.deleteProduct(2);
-//        MP.updateStorages_jor(1,"Деньги");
-//        MP.listProduct();
 //    }
 
-    /* Method to CREATE an employee in the database */
+    //Дефолтное добавдение продукта
     public Integer addProduct( String name_prod){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -52,7 +48,7 @@ public class ManageProduct extends ControllerHIbernate {
         return product_id;
     }
 
-    /* Method to  READ all the employees */
+    //Считывагие в консоль
     public void listProduct( ){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -74,7 +70,7 @@ public class ManageProduct extends ControllerHIbernate {
         }
     }
 
-    /* Method to UPDATE salary for an employee */
+    //Обновление продуктов
     public void updateProduct(Integer Product_id, String name_prod ){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -93,7 +89,7 @@ public class ManageProduct extends ControllerHIbernate {
         }
     }
 
-    /* Method to DELETE an employee from the records */
+    //Удаление продукта
     public void deleteProduct(Integer Product_ID){
         Session session = factory.openSession();
         Transaction tx = null;
