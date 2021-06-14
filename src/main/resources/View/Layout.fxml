@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.InterfaceController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <Label alignment="CENTER" prefHeight="65.0" prefWidth="256.0" style="-fx-background-color: #0d6efd;" text="Cистема управления запасами" textFill="#e7e5e5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+                <Button fx:id="btnMain" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Главная" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+                </Button>
+                <Button fx:id="btnStorage" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Склады">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Open_Envelope_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+                <Button fx:id="btnSupplier" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Покупатели">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Xbox_Menu_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+                <Button fx:id="btnReceiver" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Поставщики">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+                <Button fx:id="btnBuyPage" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Закупка">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+                <Button fx:id="btnSellPage" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Продажа">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Slider__32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Выход">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+        <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlSupplier" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TextField fx:id="tfIdSupplier" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></TextField>
+                        <Label layoutX="57.0" layoutY="25.0" text="Покупатели" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="btnAddSupplier" layoutX="506.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <TableView fx:id="tableSupplier" layoutX="57.0" layoutY="149.0" prefHeight="414.0" prefWidth="712.0" stylesheets="@table_view.css">
+                            <columns>
+                                <TableColumn fx:id="colIdSupplier" prefWidth="47.0" text="#" />
+                                <TableColumn fx:id="colNameSupplier" prefWidth="285.0" text="Название" />
+                                <TableColumn fx:id="colAddressSupplier" minWidth="0.0" prefWidth="379.0" text="Адрес" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btnEditSupplier" layoutX="666.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <Button fx:id="btnDeleteSupplier" layoutX="590.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                    </children>
+                </Pane>
+
+                <Pane fx:id="pnlStorage" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="btnViewStorage" layoutX="638.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Состояние запасов">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></TextField>
+                        <Label layoutX="57.0" layoutY="25.0" text="Склады" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="btnAddStorage" layoutX="365.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <TableView fx:id="tableStorage" layoutX="57.0" layoutY="149.0" prefHeight="414.0" prefWidth="712.0" stylesheets="@table_view.css">
+                            <columns>
+                                <TableColumn fx:id="colIdStorage" prefWidth="47.0" text="#" />
+                                <TableColumn fx:id="colNameStorage" prefWidth="285.0" text="Название" />
+                                <TableColumn fx:id="colAddressStorage" minWidth="0.0" prefWidth="379.0" text="Адрес" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btnEditStorage" layoutX="522.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <Button fx:id="btnDeleteStorage" layoutX="448.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <Button fx:id="btnViewBuy" layoutX="86.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть закупки" />
+                        <Button fx:id="btnViewSell" layoutX="221.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть продажи" />
+                    </children>
+                </Pane>
+
+                <Pane fx:id="pnlReceiver" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TextField fx:id="tfIdReceiver" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></TextField>
+                        <Label layoutX="57.0" layoutY="25.0" text="Поставщики" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="btnAddReceiver" layoutX="506.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAdd" text="Добавить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <TableView fx:id="tableReceiver" layoutX="57.0" layoutY="149.0" prefHeight="414.0" prefWidth="712.0" stylesheets="@table_view.css">
+                            <columns>
+                                <TableColumn fx:id="colIdReceiver" prefWidth="47.0" text="#" />
+                                <TableColumn fx:id="colNameReceiver" prefWidth="285.0" text="Название" />
+                                <TableColumn fx:id="colAddressReceiver" minWidth="0.0" prefWidth="379.0" text="Адрес" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btnEditReceiver" layoutX="666.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleEdit" text="Редактировать">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <Button fx:id="btnDeleteReceiver" layoutX="590.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDelete" text="Удалить">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                    </children>
+                </Pane>
+
+                <Pane fx:id="pnlMain" prefHeight="554.0" prefWidth="793.0">
+                    <children>
+                        <Label layoutX="57.0" layoutY="25.0" text="Главная" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane fx:id="pnlBuy" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="57.0" layoutY="25.0" text="Закупка существующего" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="tfNameN" layoutX="441.0" layoutY="243.0" prefHeight="32.0" prefWidth="296.0" promptText="Введите наименование товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font></TextField>
+                        <TextField fx:id="tfPriceN" layoutX="441.0" layoutY="387.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите цену за единицу товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                        <DatePicker fx:id="dateBuyN" layoutX="440.0" layoutY="459.0" />
+                        <Label layoutX="441.0" layoutY="203.0" prefHeight="20.0" prefWidth="109.0" text="Наименование" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <TextField fx:id="tfCountPN" layoutX="441.0" layoutY="315.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите количество товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="441.0" layoutY="347.0" prefHeight="30.0" prefWidth="165.0" text="Цена за единицу товара" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <Label layoutX="441.0" layoutY="275.0" prefHeight="30.0" prefWidth="165.0" text="Количество товара" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <Label layoutX="441.0" layoutY="419.0" prefHeight="30.0" prefWidth="165.0" text="Дата закупки" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <Button fx:id="btnBuyNew" layoutX="440.0" layoutY="504.0" mnemonicParsing="false" onAction="#handleBuy" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Закупить">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <Label layoutX="441.0" layoutY="138.0" prefHeight="30.0" prefWidth="165.0" text="Поставщик" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbReceiverN" layoutX="441.0" layoutY="178.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите поставщика" />
+                        <Label layoutX="441.0" layoutY="73.0" prefHeight="30.0" prefWidth="165.0" text="Склад" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbStorageN" layoutX="441.0" layoutY="113.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите склад" />
+                        <Label layoutX="441.0" layoutY="25.0" text="Закупка нового" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="57.0" layoutY="73.0" prefHeight="30.0" prefWidth="165.0" text="Склад" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbStorageE" layoutX="57.0" layoutY="113.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите склад" />
+                        <Label layoutX="57.0" layoutY="138.0" prefHeight="30.0" prefWidth="165.0" text="Товар" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbProductE" layoutX="57.0" layoutY="178.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите товар" />
+                        <TextField fx:id="tfCountPE" layoutX="57.0" layoutY="243.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите количество товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="57.0" layoutY="203.0" prefHeight="30.0" prefWidth="165.0" text="Количество товара" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <DatePicker fx:id="dateBuyE" layoutX="57.0" layoutY="315.0" />
+                        <Label layoutX="58.0" layoutY="275.0" prefHeight="30.0" prefWidth="165.0" text="Дата закупки" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <Button fx:id="btnBuyExist" layoutX="57.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleBuy" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Закупить">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+                <Pane fx:id="pnlSell" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Label layoutX="57.0" layoutY="25.0" text="Продажа" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="57.0" layoutY="73.0" prefHeight="30.0" prefWidth="165.0" text="Склад" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbStorageSell" layoutX="57.0" layoutY="113.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите склад" />
+                        <Label layoutX="57.0" layoutY="138.0" prefHeight="30.0" prefWidth="165.0" text="Товар" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbProductSell" layoutX="57.0" layoutY="178.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите товар" />
+                        <TextField fx:id="tfCountSell" layoutX="57.0" layoutY="308.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите количество товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="57.0" layoutY="268.0" prefHeight="30.0" prefWidth="165.0" text="Количество товара" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <DatePicker fx:id="dateSell" layoutX="58.0" layoutY="452.0" />
+                        <Label layoutX="57.0" layoutY="412.0" prefHeight="30.0" prefWidth="165.0" text="Дата продажи" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <Button fx:id="btnSell" layoutX="58.0" layoutY="497.0" mnemonicParsing="false" onAction="#handleSell" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Закупить">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <TextField fx:id="tfPriceSell" layoutX="57.0" layoutY="380.0" prefHeight="32.0" prefWidth="244.0" promptText="Введите цену за единицу товара" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-text-fill:#e7e5e5;">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </TextField>
+                        <Label layoutX="57.0" layoutY="340.0" prefHeight="30.0" prefWidth="165.0" text="Цена за единицу товара" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                        <ComboBox fx:id="cbSupplierSell" layoutX="57.0" layoutY="243.0" prefHeight="25.0" prefWidth="296.0" promptText="Выберите покупателя" />
+                        <Label layoutX="57.0" layoutY="203.0" prefHeight="30.0" prefWidth="165.0" text="Покупатель" textFill="#e7e5e5">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" top="10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
