@@ -1,5 +1,6 @@
 package Controllers;
 
+import Base.ControllerHIbernate;
 import POJO.Storage_jor;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,8 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class ManageStorageJor {
-    private static SessionFactory factory;
+public class ManageStorageJor extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -113,11 +113,6 @@ public class ManageStorageJor {
         } finally {
             session.close();
         }
-    }
-
-
-    public static void setFactory(SessionFactory factory) {
-        ManageStorageJor.factory = factory;
     }
 
     public ManageStorageJor() {

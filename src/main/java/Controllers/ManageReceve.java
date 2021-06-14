@@ -1,5 +1,6 @@
 package Controllers;
 
+import Base.ControllerHIbernate;
 import POJO.Receve;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -15,8 +16,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageReceve {
-    private static SessionFactory factory;
+public class ManageReceve extends ControllerHIbernate {
     public static void main(String[] args) { //:TODO удалить тестовый блок
 
         try {
@@ -120,11 +120,6 @@ public class ManageReceve {
         } finally {
             session.close();
         }
-    }
-
-
-    public static void setFactory(SessionFactory factory) {
-        ManageReceve.factory = factory;
     }
 
     public ManageReceve() {

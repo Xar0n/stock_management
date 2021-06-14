@@ -1,5 +1,6 @@
 package Controllers;
 
+import Base.ControllerHIbernate;
 import POJO.Recevier;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,8 +10,7 @@ import org.hibernate.Transaction;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageRecevier {
-    private static SessionFactory factory;
+public class ManageRecevier extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -112,11 +112,6 @@ public class ManageRecevier {
         } finally {
             session.close();
         }
-    }
-
-
-    public static void setFactory(SessionFactory factory) {
-        ManageRecevier.factory = factory;
     }
 
     public ManageRecevier() {

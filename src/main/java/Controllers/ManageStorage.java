@@ -1,5 +1,6 @@
 package Controllers;
 
+import Base.ControllerHIbernate;
 import POJO.Storage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,9 +10,7 @@ import org.hibernate.Transaction;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageStorage {
-    private static SessionFactory factory;
-
+public class ManageStorage extends ControllerHIbernate {
     /* Method to CREATE an employee in the database */
     public Integer addStorage(String name, String address){
         Session session = factory.openSession();
@@ -89,11 +88,6 @@ public class ManageStorage {
         } finally {
             session.close();
         }
-    }
-
-
-    public static void setFactory(SessionFactory factory) {
-        ManageStorage.factory = factory;
     }
 
     public ManageStorage() {

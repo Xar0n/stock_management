@@ -1,5 +1,7 @@
 package manage_stocks;
 
+import Base.ControllerHIbernate;
+import Controllers.ManageProduct;
 import Controllers.ManageStorage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +32,7 @@ public class Main extends Application {
             System.err.println("Failed to create sessionFactory object." + ex); //TODO локализация ошибок
             throw new ExceptionInInitializerError(ex);
         }
-        ManageStorage.setFactory(factory);
+        ControllerHIbernate.setFactory(factory);
 
 
         Parent root = FXMLLoader.load(getClass().getResource("/View/Layout.fxml"));

@@ -1,5 +1,6 @@
 package Controllers;
 
+import Base.ControllerHIbernate;
 import POJO.Suppliers;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,8 +10,7 @@ import org.hibernate.Transaction;
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageSuppliers {
-    private static SessionFactory factory;
+public class ManageSuppliers extends ControllerHIbernate {
 //    public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
@@ -114,11 +114,6 @@ public class ManageSuppliers {
         } finally {
             session.close();
         }
-    }
-
-
-    public static void setFactory(SessionFactory factory) {
-        ManageSuppliers.factory = factory;
     }
 
     public ManageSuppliers() {
