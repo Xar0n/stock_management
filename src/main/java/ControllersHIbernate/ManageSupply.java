@@ -3,6 +3,8 @@ package ControllersHIbernate;
 import Base.ControllerHIbernate;
 import POJO.Receve;
 import POJO.Supply;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -85,7 +87,26 @@ public class ManageSupply extends ControllerHIbernate {
             session.close();
         }
     }
-
+    //Формирование дефолтной таблицы для поставщиков
+    public ObservableList<Supply> selectAll( ){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Supply> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List supply = session.createQuery("FROM Supply").list();
+            for (Iterator iterator = supply.iterator(); iterator.hasNext();){
+                list.add((Supply) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
     //Стандартный метод обновления
     public void updateSupply(Integer supply_id,int id_suppliers,int id_sj ,int ammount_sup, LocalDate date_sup, int proccessed ){
         Session session = factory.openSession();
