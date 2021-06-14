@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ManageStorage extends ControllerHIbernate {
 
-    /* Method to CREATE an employee in the database */
+    // Добавление склада
     public Integer addStorage(String name, String address){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -33,7 +33,7 @@ public class ManageStorage extends ControllerHIbernate {
         return storageID;
     }
 
-    /* Method to  READ all the employees */
+    // Вывод в консольк
     public void listStorages( ){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -54,7 +54,7 @@ public class ManageStorage extends ControllerHIbernate {
             session.close();
         }
     }
-
+    //Дефолтный вывод в таблицы
     public ObservableList<Storage> selectAll() {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -75,14 +75,15 @@ public class ManageStorage extends ControllerHIbernate {
         return list;
     }
 
-    /* Method to UPDATE salary for an employee */
-    public void updateStorages(Integer StorageID, String address ){
+    // Обновление складов
+    public void updateStorages(Integer StorageID, String name,String address ){
         Session session = factory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
             Storage storage = (Storage) session.get(Storage.class, StorageID);
+            storage.setName(name);
             storage.setAddress(address);
             session.update(storage);
             tx.commit();
@@ -94,7 +95,7 @@ public class ManageStorage extends ControllerHIbernate {
         }
     }
 
-    /* Method to DELETE an employee from the records */
+    //Удаление складов
     public void deleteStorage(Integer StorageID){
         Session session = factory.openSession();
         Transaction tx = null;

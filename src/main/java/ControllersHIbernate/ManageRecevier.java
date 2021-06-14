@@ -1,13 +1,16 @@
 package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
+import POJO.Receve;
 import POJO.Recevier;
-import POJO.Storage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 import java.util.Iterator;
 import java.util.List;
@@ -26,18 +29,11 @@ public class ManageRecevier extends ControllerHIbernate {
 //            throw new ExceptionInInitializerError(ex);
 //        }
 //        ManageRecevier MR = new ManageRecevier();
-//        MR.addRecevier("Рога и копыта","Ивана-Крузерштерна 25");
-//        MR.addRecevier("Рога и неокопыта","Москва Пожарски 28");
-//
-//        MR.listRecevier();
-//
-//        MR.updateRecevier(1,"Сатана и другие");
-//        MR.deleteRecevier(2);
-//
+//        MR.updateRecevier(3,"Малут","Новокузенцк Атера 725");
 //        MR.listRecevier();
 //    }
 
-    /* Method to CREATE an employee in the database */
+    //Добавление покупателей
     public Integer addRecevier( String name_recev, String address_recev){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -57,7 +53,7 @@ public class ManageRecevier extends ControllerHIbernate {
         return id_recevier;
     }
 
-    /* Method to  READ all the employees */
+    //Тестовый вывод в консольку
     public void listRecevier( ){
         Session session = factory.openSession();
         Transaction tx = null;
@@ -79,7 +75,7 @@ public class ManageRecevier extends ControllerHIbernate {
         }
     }
 
-    public ObservableList<Recevier> selectAll() {
+    public ObservableList<Recevier> selectAll( ){
         Session session = factory.openSession();
         Transaction tx = null;
         ObservableList<Recevier> list = FXCollections.observableArrayList();
@@ -96,11 +92,11 @@ public class ManageRecevier extends ControllerHIbernate {
         } finally {
             session.close();
         }
-        return list;
+        return  list;
     }
 
-    /* Method to UPDATE salary for an employee */
-    public void updateRecevier(Integer recevier_id, String name_recev ){
+    //Дефолтный апдейт
+    public void updateRecevier(Integer recevier_id, String name_recev, String address_recev ){
         Session session = factory.openSession();
         Transaction tx = null;
 
@@ -108,6 +104,7 @@ public class ManageRecevier extends ControllerHIbernate {
             tx = session.beginTransaction();
             Recevier recevier = (Recevier) session.get(Recevier.class, recevier_id);
             recevier.setName_recev(name_recev);
+            recevier.setAddress_recev(address_recev);
             session.update(recevier);
             tx.commit();
         } catch (HibernateException e) {
@@ -118,7 +115,7 @@ public class ManageRecevier extends ControllerHIbernate {
         }
     }
 
-    /* Method to DELETE an employee from the records */
+    //удаление
     public void deleteRecevier(Integer Recevier_ID){
         Session session = factory.openSession();
         Transaction tx = null;

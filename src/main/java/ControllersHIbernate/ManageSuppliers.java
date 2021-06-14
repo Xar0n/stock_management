@@ -102,7 +102,7 @@ public class ManageSuppliers extends ControllerHIbernate {
     }
 
     /* Method to UPDATE salary for an employee */
-    public void updateSuppliers(Integer suppliers_id, String name_sup ){
+    public void updateSuppliers(Integer suppliers_id, String name_sup, String address_sup ){
         Session session = factory.openSession();
         Transaction tx = null;
 
@@ -110,6 +110,7 @@ public class ManageSuppliers extends ControllerHIbernate {
             tx = session.beginTransaction();
             Suppliers suppliers = (Suppliers) session.get(Suppliers.class, suppliers_id);
             suppliers.setName_sup(name_sup);
+            suppliers.setAddress_sup(address_sup);
             session.update(suppliers);
             tx.commit();
         } catch (HibernateException e) {
