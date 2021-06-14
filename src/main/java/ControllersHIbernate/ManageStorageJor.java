@@ -78,7 +78,7 @@ public class ManageStorageJor extends ControllerHIbernate {
     }
 
     /* Method to UPDATE salary for an employee */
-    public void updateStorages_jor(Integer Storage_jor_ID, Integer id_product ){ //TODO расширить до необходимого
+    public void updateStorages_jor(Integer Storage_jor_ID, Integer id_product, Integer id_storage, Integer amount, Integer price_in_sup, Integer price_in_sale ){ //TODO расширить до необходимого
         Session session = factory.openSession();
         Transaction tx = null;
 
@@ -86,7 +86,10 @@ public class ManageStorageJor extends ControllerHIbernate {
             tx = session.beginTransaction();
             Storage_jor storage_jor = (Storage_jor) session.get(Storage_jor.class, Storage_jor_ID);
             storage_jor.setId_product(id_product);
-            session.update(storage_jor);
+            storage_jor.setId_storage(id_storage);
+            storage_jor.setAmount(amount);
+            storage_jor.setPrice_in_sup(price_in_sup);
+            storage_jor.setPrice_in_sale(price_in_sale);
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
