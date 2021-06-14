@@ -1,9 +1,15 @@
 package ControllersFX;
 
 import Base.ControllerFX;
+import ControllersHIbernate.ManageRecevier;
+import ControllersHIbernate.ManageStorage;
+import ControllersHIbernate.ManageSuppliers;
+import POJO.Storage;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -64,16 +70,16 @@ public class InterfaceController extends ControllerFX {
     private Button btnAddStorage;
 
     @FXML
-    private TableColumn<?, ?> colIdStorage;
+    private TableColumn<Storage, Integer> colIdStorage;
 
     @FXML
-    private TableColumn<?, ?> colNameStorage;
+    private TableColumn<Storage, String> colNameStorage;
 
     @FXML
-    private TableColumn<?, ?> colAddressStorage;
+    private TableColumn<Storage, String> colAddressStorage;
 
     @FXML
-    private TableView<?> tableStorage;
+    private TableView<Storage> tableStorage;
 
     @FXML
     private Button btnEditStorage;
@@ -205,11 +211,22 @@ public class InterfaceController extends ControllerFX {
 
     private String backgroundColor = "-fx-background-color : #02030A";
 
+    ManageStorage storage_model;
+    ManageRecevier receiver_model;
+    ManageSuppliers supplier_model;
+    ObservableList<Storage> storages;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pnlMain.setStyle("-fx-background-color : #02030A");
         pnlMain.toFront();
+        storage_model = new ManageStorage();
+        receiver_model = new ManageRecevier();
+        supplier_model = new ManageSuppliers();
+        colIdStorage.setCellValueFactory(new PropertyValueFactory<Storage,Integer>("id_storage"));
+        colNameStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("name"));
+        colAddressStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("address"));
     }
 
 
@@ -250,9 +267,8 @@ public class InterfaceController extends ControllerFX {
             pnlMain.setStyle(backgroundColor);
             pnlMain.toFront();
         } else if (event.getSource() == btnStorage) {
-
-
-
+            storages = storage_model.selectAll();
+            tableStorage.setItems(storages);
             pnlStorage.setStyle(backgroundColor);
             pnlStorage.toFront();
         } else if (event.getSource() == btnSupplier) {
