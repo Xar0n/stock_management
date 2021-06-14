@@ -1,6 +1,6 @@
 package Controller;
 
-import Base.Controller;
+import Base.ControllerFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SupplierController extends Controller {
+public class SupplierController extends ControllerFX {
     @FXML
     private TextField tfName;
 

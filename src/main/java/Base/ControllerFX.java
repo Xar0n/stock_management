@@ -13,17 +13,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public abstract class Controller implements Initializable {
+public abstract class ControllerFX implements Initializable {
     public static Parent getResource(String resource) throws IOException
     {
-        return FXMLLoader.load(Controller.class.getResource(resource));
+        return FXMLLoader.load(ControllerFX.class.getResource(resource));
     }
 
     public static void createWindow(ActionEvent event, String title, String resource, boolean modal)
     {
         try{
             Stage stage = new Stage();
-            Parent root = Controller.getResource(resource);
+            Parent root = ControllerFX.getResource(resource);
             stage.setScene(new Scene(root));
             stage.setTitle(title);
             if(modal)

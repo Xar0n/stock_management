@@ -1,18 +1,37 @@
 package manage_stocks;
 
+import Controllers.ManageStorage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 public class Main extends Application {
     public static Stage primaryStage = null;
     private double x, y;
+    private static SessionFactory factory;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        try {
+            Configuration configuration = new Configuration();
+            configuration.configure();
+            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(
+                    configuration.getProperties()).buildServiceRegistry();
+            factory = configuration.buildSessionFactory(serviceRegistry);
+        } catch (Throwable ex) {
+            System.err.println("Failed to create sessionFactory object." + ex); //TODO локализация ошибок
+            throw new ExceptionInInitializerError(ex);
+        }
+        ManageStorage.setFactory(factory);
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/View/Layout.fxml"));
         primaryStage.setScene(new Scene(root));
@@ -27,6 +46,7 @@ public class Main extends Application {
 
         });
         primaryStage.show();
+
     }
 
 

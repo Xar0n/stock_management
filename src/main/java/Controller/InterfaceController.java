@@ -1,6 +1,6 @@
 package Controller;
 
-import Base.Controller;
+import Base.ControllerFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,7 +11,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class InterfaceController extends Controller {
+public class InterfaceController extends ControllerFX {
 
     //Main
     @FXML
