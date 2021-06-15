@@ -501,7 +501,8 @@ public class InterfaceController extends ControllerFX {
     void handleView(ActionEvent event) {
         int id = Integer.parseInt(tfIdStorage.getText());
         if (event.getSource() == btnViewStorage) {
-
+            StocksController.setId(id);
+            StocksController.createWindow(event, "Состояние запасов", "/View/View/stock.fxml", true);
         } else if (event.getSource() == btnViewBuy) {
             BuyController.setId(id);
             BuyController.createWindow(event, "Просмотр покупок", "/View/View/buy.fxml", true);

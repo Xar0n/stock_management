@@ -2,6 +2,7 @@ package POJO;
 
 public class VIEW_STORAGE_NUM {
     private int id_product;
+    private int id_storage;
     private String name_prod;
     private int amount;
     private float price_in_sup;
@@ -10,11 +11,20 @@ public class VIEW_STORAGE_NUM {
     public VIEW_STORAGE_NUM() {
     }
 
-    public VIEW_STORAGE_NUM(String name_prod, int amount, float price_in_sup, float price_in_sale) {
+    public VIEW_STORAGE_NUM(int id_storage, String name_prod, int amount, float price_in_sup, float price_in_sale) {
         this.name_prod = name_prod;
         this.amount = amount;
         this.price_in_sup = price_in_sup;
         this.price_in_sale = price_in_sale;
+        this.id_storage = id_storage;
+    }
+
+    public int getId_storage() {
+        return id_storage;
+    }
+
+    public void setId_storage(int id_storage) {
+        this.id_storage = id_storage;
     }
 
     public int getId_product() {

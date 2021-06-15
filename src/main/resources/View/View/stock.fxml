@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="936.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllersFX.StocksController">
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+   <children>
+      <TableView fx:id="tableStock" layoutX="41.0" layoutY="68.0" prefHeight="432.0" prefWidth="855.0" stylesheets="@../table_view.css">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="49.0" text="#" />
+            <TableColumn fx:id="colName" prefWidth="346.0" text="Название товара" />
+          <TableColumn fx:id="colAmount" prefWidth="95.0" text="Количество" />
+            <TableColumn fx:id="colPriceBuy" prefWidth="193.0" text="Цена при покупке" />
+            <TableColumn fx:id="colPriceSell" prefWidth="171.0" text="Цена при продаже" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

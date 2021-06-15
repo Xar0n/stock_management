@@ -52,4 +52,25 @@ public class ManageVIEWSTORAGENUM extends ControllerHIbernate {
         }
         return list;
     }
+
+    public ObservableList<VIEW_STORAGE_NUM> selectByIdStorage(int id_storage){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<VIEW_STORAGE_NUM> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List storages = session.createQuery("Select e from VIEW_STORAGE_NUM e where e.id_storage =:id_storage").
+                    setParameter("id_storage", id_storage).list();
+            for (Iterator iterator = storages.iterator(); iterator.hasNext();){
+                list.add((VIEW_STORAGE_NUM) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
 }

@@ -16,6 +16,7 @@
 
         <property name = "name_prod" column = "name_prod" type = "string"/>
         <property name = "amount" column = "amount" type = "int"/>
+        <property name = "id_storage" column = "id_storage" type = "int"/>
         <property name = "price_in_sup" column = "price_in_sup" type = "float"/>
         <property name = "price_in_sale" column = "price_in_sale" type = "float"/>
 
