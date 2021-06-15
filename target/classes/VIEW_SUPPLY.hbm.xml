@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "POJO.VIEW_SUPPLY" table = "view_supply">
+
+        <meta attribute = "class-description">
+            This class contains the storage detail.
+        </meta>
+
+        <id name = "id_supply" type = "int" column = "id_supply">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name_prod" column = "name_prod" type = "string"/>
+        <property name = "name_sup" column = "name_sup" type = "string"/>
+        <property name = "ammount_sup" column = "ammount_sup" type = "int"/>
+        <property name = "price_in_sup" column = "price_in_sup" type = "float"/>
+        <property name = "date_sup" column = "date_sup" type = "date"/>
+        <property name = "processed" column = "processed" type = "int"/>
+
+    </class>
+</hibernate-mapping>
