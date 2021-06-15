@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class VIEW_SUPPLY {
     private int id_supply;
+    private int id_storage;
     private String name_prod;
     private  String name_sup;
     private int ammount_sup;
@@ -21,6 +22,14 @@ public class VIEW_SUPPLY {
         this.price_in_sup = price_in_sup;
         this.date_sup = date_sup;
         this.processed = processed;
+    }
+
+    public int getId_storage() {
+        return id_storage;
+    }
+
+    public void setId_storage(int id_storage) {
+        this.id_storage = id_storage;
     }
 
     public int getId_supply() {

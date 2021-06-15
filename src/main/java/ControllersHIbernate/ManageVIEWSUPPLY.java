@@ -3,6 +3,7 @@ package ControllersHIbernate;
 import Base.ControllerHIbernate;
 import POJO.Recevier;
 import POJO.Suppliers;
+import POJO.VIEW_RECEVE;
 import POJO.VIEW_SUPPLY;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,6 +46,27 @@ public class ManageVIEWSUPPLY extends ControllerHIbernate {
             tx = session.beginTransaction();
             List view_supply1 = session.createQuery("FROM VIEW_SUPPLY").list();
             for (Iterator iterator = view_supply1.iterator(); iterator.hasNext();) {
+                list.add((VIEW_SUPPLY) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public ObservableList<VIEW_SUPPLY> selectByIdStorage(int id_storage){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<VIEW_SUPPLY> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List storages = session.createQuery("Select e from VIEW_SUPPLY e where e.id_storage =:id_storage").
+                    setParameter("id_storage", id_storage).list();
+            for (Iterator iterator = storages.iterator(); iterator.hasNext();){
                 list.add((VIEW_SUPPLY) iterator.next());
             }
             tx.commit();

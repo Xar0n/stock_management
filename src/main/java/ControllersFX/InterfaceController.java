@@ -507,7 +507,8 @@ public class InterfaceController extends ControllerFX {
             BuyController.setId(id);
             BuyController.createWindow(event, "Просмотр покупок", "/View/View/buy.fxml", true);
         } else if (event.getSource() == btnViewSell) {
-
+            SellController.setId(id);
+            SellController.createWindow(event, "Просмотр продаж", "/View/View/sell.fxml", true);
         }
     }
 }
