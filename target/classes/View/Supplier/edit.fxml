@@ -29,7 +29,7 @@
             <Font name="Ebrima" size="14.0" />
          </font>
       </TextField>
-       <Button fx:id="btnAdd" layoutX="204.0" layoutY="230.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Редактировать">
+       <Button fx:id="btnEdit" layoutX="204.0" layoutY="230.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Редактировать">
            <font>
                <Font name="Ebrima" size="14.0" />
            </font>

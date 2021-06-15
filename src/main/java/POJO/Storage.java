@@ -1,9 +1,17 @@
 package POJO;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "storage")
 public class Storage {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_storage;
+    @Column (name = "name")
     private String name;
+    @Column (name = "address")
     private String address;
 
     public Storage() {

@@ -3,6 +3,7 @@ package ControllersHIbernate;
 import Base.ControllerHIbernate;
 import POJO.Receve;
 import POJO.Recevier;
+import POJO.Storage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
@@ -73,6 +74,11 @@ public class ManageRecevier extends ControllerHIbernate {
         } finally {
             session.close();
         }
+    }
+
+    public Recevier findById(int id) {
+        Session session = factory.openSession();
+        return (Recevier) session.get(Recevier.class, id);
     }
 
     public ObservableList<Recevier> selectAll( ){

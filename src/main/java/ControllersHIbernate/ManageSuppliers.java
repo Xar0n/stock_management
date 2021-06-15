@@ -101,6 +101,11 @@ public class ManageSuppliers extends ControllerHIbernate {
         return list;
     }
 
+    public Suppliers findById(int id) {
+        Session session = factory.openSession();
+        return (Suppliers) session.get(Suppliers.class, id);
+    }
+
     /* Method to UPDATE salary for an employee */
     public void updateSuppliers(Integer suppliers_id, String name_sup, String address_sup ){
         Session session = factory.openSession();

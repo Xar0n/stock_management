@@ -1,6 +1,7 @@
 package manage_stocks;
 
 import Base.ControllerHIbernate;
+import POJO.Storage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +24,7 @@ public class Main extends Application {
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
+            configuration.addAnnotatedClass(Storage.class);
             ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(
                     configuration.getProperties()).buildServiceRegistry();
             factory = configuration.buildSessionFactory(serviceRegistry);

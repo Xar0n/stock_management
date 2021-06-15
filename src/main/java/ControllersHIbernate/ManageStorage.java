@@ -37,7 +37,6 @@ public class ManageStorage extends ControllerHIbernate {
     public void listStorages( ){
         Session session = factory.openSession();
         Transaction tx = null;
-
         try {
             tx = session.beginTransaction();
             List storages = session.createQuery("FROM Storage").list();
@@ -73,6 +72,11 @@ public class ManageStorage extends ControllerHIbernate {
             session.close();
         }
         return list;
+    }
+
+    public Storage findById(int id) {
+        Session session = factory.openSession();
+        return (Storage) session.get(Storage.class, id);
     }
 
     // Обновление складов

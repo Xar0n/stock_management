@@ -1,8 +1,16 @@
 package POJO;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "receiver")
 
 public class Recevier {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_recevier;
+    @Column(name = "name")
     private String name_recev;
+    @Column (name = "address")
     private String address_recev;
 
     public Recevier() {
