@@ -1,12 +1,11 @@
 package ControllersFX;
 
 import Base.ControllerFX;
-import ControllersHIbernate.ManageRecevier;
-import ControllersHIbernate.ManageStorage;
-import ControllersHIbernate.ManageSuppliers;
+import ControllersHIbernate.*;
 import POJO.Recevier;
 import POJO.Storage;
 import POJO.Suppliers;
+import POJO.Supply;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -113,16 +113,16 @@ public class InterfaceController extends ControllerFX {
     private Button btnBuyNew;
 
     @FXML
-    private ComboBox<String> cbReceiverN;
+    private ComboBox<Recevier> cbReceiverN;
 
     @FXML
-    private ComboBox<String> cbStorageN;
+    private ComboBox<Storage> cbStorageN;
 
     @FXML
-    private ComboBox<String> cbStorageE;
+    private ComboBox<Storage> cbStorageE;
 
     @FXML
-    private ComboBox<String> cbProductE;
+    private ComboBox<?> cbProductE;
 
     @FXML
     private TextField tfCountPE;
@@ -139,7 +139,7 @@ public class InterfaceController extends ControllerFX {
 
     //Sell
     @FXML
-    private ComboBox<String> cbStorageSell;
+    private ComboBox<Storage> cbStorageSell;
 
     @FXML
     private ComboBox<String> cbProductSell;
@@ -157,7 +157,7 @@ public class InterfaceController extends ControllerFX {
     private TextField tfPriceSell;
 
     @FXML
-    private ComboBox<?> cbSupplierSell;
+    private ComboBox<Suppliers> cbSupplierSell;
 
 
     //Supplier
@@ -216,9 +216,14 @@ public class InterfaceController extends ControllerFX {
     ManageStorage storage_model;
     ManageRecevier receiver_model;
     ManageSuppliers supplier_model;
+    ManageReceve receve_model;
+    ManageSupply supply_model;
+    ManageStorageJor storageJor_model;
+    ManageProduct product_model;
     ObservableList<Storage> storages;
     ObservableList<Recevier> receivers;
     ObservableList<Suppliers> suppliers;
+
 
     public void updateTableStorage() {
         storages = storage_model.selectAll();
@@ -233,6 +238,10 @@ public class InterfaceController extends ControllerFX {
     public void updateTableSuppliers() {
         suppliers = supplier_model.selectAll();
         tableSupplier.setItems(suppliers);
+    }
+    @FXML
+    void choseCbStorageE (ActionEvent event) {
+
     }
 
     @Override
@@ -251,6 +260,42 @@ public class InterfaceController extends ControllerFX {
         colIdSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers,Integer>("id_suppliers"));
         colNameSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers, String>("name_sup"));
         colAddressSupplier.setCellValueFactory(new PropertyValueFactory<Suppliers, String>("address_sup"));
+        cbStorageN.setConverter(new StringConverter<Storage>() {
+            @Override
+            public String toString(Storage storage) {
+                return storage.getId_storage() + " | " + storage.getName() + " | " + storage.getAddress();
+            }
+
+            @Override
+            public Storage fromString(String string) {
+                return cbStorageN.getItems().stream().filter(ap ->
+                        ap.getName().equals(string)).findFirst().orElse(null);
+            }
+        });
+        cbStorageE.setConverter(new StringConverter<Storage>() {
+            @Override
+            public String toString(Storage storage) {
+                return storage.getId_storage() + " | " + storage.getName() + " | " + storage.getAddress();
+            }
+
+            @Override
+            public Storage fromString(String string) {
+                return cbStorageE.getItems().stream().filter(ap ->
+                        ap.getName().equals(string)).findFirst().orElse(null);
+            }
+        });
+        cbReceiverN.setConverter(new StringConverter<Recevier>() {
+            @Override
+            public String toString(Recevier recevier) {
+                return recevier.getId_recevier() + " | " + recevier.getName_recev() + " | " + recevier.getAddress_recev();
+            }
+
+            @Override
+            public Recevier fromString(String string) {
+                return cbReceiverN.getItems().stream().filter(ap ->
+                        ap.getName_recev().equals(string)).findFirst().orElse(null);
+            }
+        });
     }
 
 
@@ -269,12 +314,15 @@ public class InterfaceController extends ControllerFX {
     @FXML
     void handleBuy(ActionEvent event) {
         if (event.getSource() == btnBuyNew) {
-            //cbStorageN
-            //cbReceiverN
+            Storage storage = cbStorageN.getSelectionModel().getSelectedItem();
+            Recevier recevier = cbReceiverN.getSelectionModel().getSelectedItem();
             String name = tfNameN.getText();
             int count = Integer.parseInt(tfCountPN.getText());
-            double price = Double.parseDouble(tfPriceN.getText());
+            float price = Float.parseFloat(tfPriceN.getText());
             LocalDate date = dateBuyN.getValue();
+            int id_product = product_model.addProduct(name);
+            int id_storageJor = storageJor_model.addStorageJor(id_product, storage.getId_storage(), count, price, 0);
+            receve_model.addReceve(recevier.getId_recevier(), id_storageJor, count, date, 0);
         } else if (event.getSource() == btnBuyExist) {
             //cbStorageE
             //cbProductE
@@ -303,10 +351,10 @@ public class InterfaceController extends ControllerFX {
             pnlReceiver.setStyle(backgroundColor);
             pnlReceiver.toFront();
         } else if (event.getSource() == btnBuyPage) {
-            cbStorageN.valueProperty().set(null);
-            cbReceiverN.valueProperty().set(null);
-            cbStorageE.valueProperty().set(null);
-            cbProductE.valueProperty().set(null);
+            storages = storage_model.selectAll();
+            cbStorageN.setItems(storages);
+            receivers = receiver_model.selectAll();
+            cbReceiverN.setItems(receivers);
             pnlBuy.setStyle(backgroundColor);
             pnlBuy.toFront();
         } else if (event.getSource() == btnSellPage) {
@@ -319,11 +367,6 @@ public class InterfaceController extends ControllerFX {
             Stage stage = (Stage) btnSignout.getScene().getWindow();
             stage.close();
         }
-    }
-
-    @FXML
-    void handleFind(ActionEvent event) {
-
     }
 
     //Добавление записи в таблицу

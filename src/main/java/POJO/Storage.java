@@ -1,5 +1,7 @@
 package POJO;
 
+import javafx.util.StringConverter;
+
 import javax.persistence.*;
 
 @Entity
@@ -45,4 +47,5 @@ public class Storage {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
