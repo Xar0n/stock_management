@@ -139,7 +139,7 @@ public class InterfaceController extends ControllerFX {
     private ComboBox<Storage> cbStorageSell;
 
     @FXML
-    private ComboBox<String> cbProductSell;
+    private ComboBox<Storage_jor> cbProductSell;
 
     @FXML
     private TextField tfCountSell;
@@ -243,6 +243,13 @@ public class InterfaceController extends ControllerFX {
         cbProductE.setItems(storage_jors);
     }
 
+    @FXML
+    void choseCbStorageSell (ActionEvent event) {
+        Storage storage = cbStorageSell.getSelectionModel().getSelectedItem();
+        storage_jors = storageJor_model.selectByIdStorage(storage.getId_storage());
+        cbProductSell.setItems(storage_jors);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pnlMain.setStyle("-fx-background-color : #02030A");
@@ -287,6 +294,18 @@ public class InterfaceController extends ControllerFX {
                         ap.getName().equals(string)).findFirst().orElse(null);
             }
         });
+        cbStorageSell.setConverter(new StringConverter<Storage>() {
+            @Override
+            public String toString(Storage storage) {
+                return storage.getId_storage() + " | " + storage.getName() + " | " + storage.getAddress();
+            }
+
+            @Override
+            public Storage fromString(String string) {
+                return cbStorageSell.getItems().stream().filter(ap ->
+                        ap.getName().equals(string)).findFirst().orElse(null);
+            }
+        });
         cbReceiverN.setConverter(new StringConverter<Recevier>() {
             @Override
             public String toString(Recevier recevier) {
@@ -312,18 +331,47 @@ public class InterfaceController extends ControllerFX {
                         ap.getId_sj_str().equals(String.valueOf(string))).findFirst().orElse(null);
             }
         });
+        cbProductSell.setConverter(new StringConverter<Storage_jor>() {
+            @Override
+            public String toString(Storage_jor storage_jor) {
+                Product product = product_model.findById(storage_jor.getId_product());
+                return storage_jor.getId_sj_str() + "| " + product.getName_prod();
+            }
+
+            @Override
+            public Storage_jor fromString(String string) {
+                return cbProductSell.getItems().stream().filter(ap ->
+                        ap.getId_sj_str().equals(String.valueOf(string))).findFirst().orElse(null);
+            }
+        });
+        cbSupplierSell.setConverter(new StringConverter<Suppliers>() {
+            @Override
+            public String toString(Suppliers suppliers) {
+                return suppliers.getId_suppliers() + " | " + suppliers.getName_sup() + " | " + suppliers.getAddress_sup();
+            }
+
+            @Override
+            public Suppliers fromString(String string) {
+                return cbSupplierSell.getItems().stream().filter(ap ->
+                        ap.getName_sup().equals(string)).findFirst().orElse(null);
+            }
+        });
     }
 
 
     @FXML
     void handleSell(ActionEvent event) {
         if (event.getSource() == btnSell) {
-            //cbStorageSell
-            //cbProductSell
             //cbSupplierSell
+            Storage storage = cbStorageSell.getSelectionModel().getSelectedItem();
+            Storage_jor storage_jor = cbProductSell.getSelectionModel().getSelectedItem();
+            Suppliers suppliers = cbSupplierSell.getSelectionModel().getSelectedItem();
             int count = Integer.parseInt(tfCountSell.getText());
-            double price = Double.parseDouble(tfPriceSell.getText());
+            Float price = Float.parseFloat(tfPriceSell.getText());
             LocalDate date = dateSell.getValue();
+            storageJor_model.updateStorages_jor(storage_jor.getId_sj(), storage_jor.getId_product(), storage.getId_storage(),
+                    storage_jor.getAmount() -  count, storage_jor.getPrice_in_sup(), price);
+            supply_model.addSupply(suppliers.getId_suppliers(), storage_jor.getId_sj(), count, date, 0);
         }
     }
 
@@ -350,7 +398,6 @@ public class InterfaceController extends ControllerFX {
             Receve receve = receve_model.selectByIdStorageJor(storage_jor.getId_sj());
             receve_model.addReceve(receve.getId_reciver(), storage_jor.getId_sj(), count, date, 0);
         }
-
     }
 
     //Переключение вкладок и занесение данных в таблицы
@@ -383,6 +430,10 @@ public class InterfaceController extends ControllerFX {
             cbStorageSell.valueProperty().set(null);
             cbProductSell.valueProperty().set(null);
             cbSupplierSell.valueProperty().set(null);
+            storages = storage_model.selectAll();
+            cbStorageSell.setItems(storages);
+            suppliers = supplier_model.selectAll();
+            cbSupplierSell.setItems(suppliers);
             pnlSell.setStyle(backgroundColor);
             pnlSell.toFront();
         } else if (event.getSource() == btnSignout) {
