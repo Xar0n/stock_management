@@ -1,28 +1,24 @@
 package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
-import POJO.Recevier;
-import POJO.Suppliers;
-import POJO.VIEW_SUPPLY;
+import POJO.VIEW_RECEVE;
+import POJO.VIEW_STORAGE_NUM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-import org.hibernate.transform.AliasToBeanResultTransformer;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class ManageVIEWSUPPLY extends ControllerHIbernate {
-    public ManageVIEWSUPPLY() {
+public class ManageVIEWSTORAGENUM extends ControllerHIbernate {
+    public ManageVIEWSTORAGENUM() {
     }
-
-//    public static void main(String[] args) { //:TODO удалить тестовый блок
+//        public static void main(String[] args) { //:TODO удалить тестовый блок
 //
 //        try {
 //            Configuration configuration = new Configuration();
@@ -34,18 +30,18 @@ public class ManageVIEWSUPPLY extends ControllerHIbernate {
 //            System.err.println("Failed to create sessionFactory object." + ex);
 //            throw new ExceptionInInitializerError(ex);
 //        }
-//        ManageVIEWSUPPLY mv = new ManageVIEWSUPPLY();
-//        mv.selectAll();
+//        ManageVIEWSTORAGENUM MV = new ManageVIEWSTORAGENUM();
+//        MV.selectAll();
 //    }
-    public ObservableList<VIEW_SUPPLY> selectAll(){
+    public ObservableList<VIEW_STORAGE_NUM> selectAll(){
         Session session = factory.openSession();
         Transaction tx = null;
-        ObservableList<VIEW_SUPPLY> list = FXCollections.observableArrayList();
+        ObservableList<VIEW_STORAGE_NUM> list = FXCollections.observableArrayList();
         try {
             tx = session.beginTransaction();
-            List view_supply1 = session.createQuery("FROM VIEW_SUPPLY").list();
-            for (Iterator iterator = view_supply1.iterator(); iterator.hasNext();) {
-                list.add((VIEW_SUPPLY) iterator.next());
+            List viewStorageNum = session.createQuery("FROM VIEW_STORAGE_NUM").list();
+            for (Iterator iterator = viewStorageNum.iterator(); iterator.hasNext();) {
+                list.add((VIEW_STORAGE_NUM) iterator.next());
             }
             tx.commit();
         } catch (HibernateException e) {

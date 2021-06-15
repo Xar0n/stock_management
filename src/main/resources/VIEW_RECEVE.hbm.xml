@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "POJO.VIEW_RECEVE" table = "view_receve">
+
+        <meta attribute = "class-description">
+            This class contains the storage detail.
+        </meta>
+
+        <id name = "id_receve" type = "int" column = "id_receve">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name_prod" column = "name_prod" type = "string"/>
+        <property name = "name_recev" column = "name_recev" type = "string"/>
+        <property name = "ammount_rec" column = "ammount_rec" type = "int"/>
+        <property name = "price_in_sale" column = "price_in_sale" type = "float"/>
+        <property name = "date_rec" column = "date_rec" type = "date"/>
+        <property name = "processed" column = "processed" type = "int"/>
+
+    </class>
+</hibernate-mapping>
