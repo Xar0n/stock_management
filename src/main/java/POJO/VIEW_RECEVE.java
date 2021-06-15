@@ -9,18 +9,28 @@ public class VIEW_RECEVE {
     private int ammount_rec;
     private float price_in_sale;
     private Date date_rec;
+    private int id_storage;
     private int processed;
 
     public VIEW_RECEVE() {
     }
 
-    public VIEW_RECEVE(String name_prod, String name_recev, int ammount_rec, float price_in_sale, Date date_rec, int processed) {
+    public VIEW_RECEVE(String name_prod, String name_recev, int ammount_rec, float price_in_sale, Date date_rec, int id_storage, int processed) {
         this.name_prod = name_prod;
         this.name_recev = name_recev;
         this.ammount_rec = ammount_rec;
         this.price_in_sale = price_in_sale;
         this.date_rec = date_rec;
         this.processed = processed;
+        this.id_storage = id_storage;
+    }
+
+    public int getId_storage() {
+        return id_storage;
+    }
+
+    public void setId_storage(int id_storage) {
+        this.id_storage = id_storage;
     }
 
     public int getId_receve() {

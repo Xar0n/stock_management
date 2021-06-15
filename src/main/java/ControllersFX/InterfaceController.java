@@ -499,7 +499,13 @@ public class InterfaceController extends ControllerFX {
     //Просмотр записи в таблице
     @FXML
     void handleView(ActionEvent event) {
+        int id = Integer.parseInt(tfIdStorage.getText());
         if (event.getSource() == btnViewStorage) {
+
+        } else if (event.getSource() == btnViewBuy) {
+            BuyController.setId(id);
+            BuyController.createWindow(event, "Просмотр покупок", "/View/View/buy.fxml", true);
+        } else if (event.getSource() == btnViewSell) {
 
         }
     }

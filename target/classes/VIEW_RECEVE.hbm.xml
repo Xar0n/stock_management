@@ -18,6 +18,7 @@
         <property name = "name_recev" column = "name_recev" type = "string"/>
         <property name = "ammount_rec" column = "ammount_rec" type = "int"/>
         <property name = "price_in_sale" column = "price_in_sale" type = "float"/>
+        <property name = "id_storage" column = "id_storage" type = "int"/>
         <property name = "date_rec" column = "date_rec" type = "date"/>
         <property name = "processed" column = "processed" type = "int"/>
 
