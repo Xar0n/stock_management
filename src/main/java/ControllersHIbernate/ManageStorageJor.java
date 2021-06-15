@@ -1,7 +1,10 @@
 package ControllersHIbernate;
 
 import Base.ControllerHIbernate;
+import POJO.Storage;
 import POJO.Storage_jor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -77,8 +80,29 @@ public class ManageStorageJor extends ControllerHIbernate {
         }
     }
 
+    public ObservableList<Storage_jor> selectByIdStorage(int id_storage){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ObservableList<Storage_jor> list = FXCollections.observableArrayList();
+        try {
+            tx = session.beginTransaction();
+            List storages = session.createQuery("Select e from Storage_jor e where e.id_storage =:id_storage").
+                    setParameter("id_storage", id_storage).list();
+            for (Iterator iterator = storages.iterator(); iterator.hasNext();){
+                list.add((Storage_jor) iterator.next());
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
     /* Method to UPDATE salary for an employee */
-    public void updateStorages_jor(Integer Storage_jor_ID, Integer id_product, Integer id_storage, Integer amount, Integer price_in_sup, Integer price_in_sale ){ //TODO расширить до необходимого
+    public void updateStorages_jor(Integer Storage_jor_ID, Integer id_product, Integer id_storage, Integer amount, Float price_in_sup, Float price_in_sale ){ //TODO расширить до необходимого
         Session session = factory.openSession();
         Transaction tx = null;
 

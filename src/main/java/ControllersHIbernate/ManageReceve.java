@@ -3,6 +3,7 @@ package ControllersHIbernate;
 import Base.ControllerHIbernate;
 import POJO.Receve;
 import POJO.Storage;
+import POJO.Storage_jor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
@@ -54,6 +55,29 @@ public class ManageReceve extends ControllerHIbernate {
             session.close();
         }
         return id_receve;
+    }
+
+    public Receve selectByIdStorageJor(int id_storageJor){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        int id = 0;
+        Receve receve = null;
+        try {
+            tx = session.beginTransaction();
+            List storages = session.createQuery("Select e from Receve e where e.id_js =:id_storageJor").
+                    setParameter("id_storageJor", id_storageJor).list();
+            for (Iterator iterator = storages.iterator(); iterator.hasNext();){
+                receve = (Receve) iterator.next();
+                break;
+            }
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return receve;
     }
 
     //Вывод покупателей в консоль

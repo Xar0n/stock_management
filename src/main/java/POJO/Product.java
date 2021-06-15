@@ -1,7 +1,13 @@
 package POJO;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "storage")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_product;
+    @Column (name = "name")
     private String name_prod;
 
     public Product() {

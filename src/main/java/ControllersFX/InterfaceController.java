@@ -2,10 +2,7 @@ package ControllersFX;
 
 import Base.ControllerFX;
 import ControllersHIbernate.*;
-import POJO.Recevier;
-import POJO.Storage;
-import POJO.Suppliers;
-import POJO.Supply;
+import POJO.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -122,7 +119,7 @@ public class InterfaceController extends ControllerFX {
     private ComboBox<Storage> cbStorageE;
 
     @FXML
-    private ComboBox<?> cbProductE;
+    private ComboBox<Storage_jor> cbProductE;
 
     @FXML
     private TextField tfCountPE;
@@ -223,7 +220,7 @@ public class InterfaceController extends ControllerFX {
     ObservableList<Storage> storages;
     ObservableList<Recevier> receivers;
     ObservableList<Suppliers> suppliers;
-
+    ObservableList<Storage_jor> storage_jors;
 
     public void updateTableStorage() {
         storages = storage_model.selectAll();
@@ -241,7 +238,9 @@ public class InterfaceController extends ControllerFX {
     }
     @FXML
     void choseCbStorageE (ActionEvent event) {
-
+        Storage storage = cbStorageE.getSelectionModel().getSelectedItem();
+        storage_jors = storageJor_model.selectByIdStorage(storage.getId_storage());
+        cbProductE.setItems(storage_jors);
     }
 
     @Override
@@ -251,6 +250,10 @@ public class InterfaceController extends ControllerFX {
         storage_model = new ManageStorage();
         receiver_model = new ManageRecevier();
         supplier_model = new ManageSuppliers();
+        receve_model = new ManageReceve();
+        supply_model = new ManageSupply();
+        storageJor_model = new ManageStorageJor();
+        product_model = new ManageProduct();
         colIdStorage.setCellValueFactory(new PropertyValueFactory<Storage,Integer>("id_storage"));
         colNameStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("name"));
         colAddressStorage.setCellValueFactory(new PropertyValueFactory<Storage, String>("address"));
@@ -296,6 +299,19 @@ public class InterfaceController extends ControllerFX {
                         ap.getName_recev().equals(string)).findFirst().orElse(null);
             }
         });
+        cbProductE.setConverter(new StringConverter<Storage_jor>() {
+            @Override
+            public String toString(Storage_jor storage_jor) {
+                Product product = product_model.findById(storage_jor.getId_product());
+                return storage_jor.getId_sj_str() + "| " + product.getName_prod();
+            }
+
+            @Override
+            public Storage_jor fromString(String string) {
+                return cbProductE.getItems().stream().filter(ap ->
+                        ap.getId_sj_str().equals(String.valueOf(string))).findFirst().orElse(null);
+            }
+        });
     }
 
 
@@ -324,10 +340,15 @@ public class InterfaceController extends ControllerFX {
             int id_storageJor = storageJor_model.addStorageJor(id_product, storage.getId_storage(), count, price, 0);
             receve_model.addReceve(recevier.getId_recevier(), id_storageJor, count, date, 0);
         } else if (event.getSource() == btnBuyExist) {
-            //cbStorageE
-            //cbProductE
+            Storage storage = cbStorageE.getSelectionModel().getSelectedItem();
+            Storage_jor storage_jor = cbProductE.getSelectionModel().getSelectedItem();
             int count = Integer.parseInt(tfCountPE.getText());
             LocalDate date = dateBuyE.getValue();
+            storageJor_model.updateStorages_jor(storage_jor.getId_sj(), storage_jor.getId_product(),
+                     storage_jor.getId_storage(), storage_jor.getAmount() + count, storage_jor.getPrice_in_sup(),
+                    storage_jor.getPrice_in_sale());
+            Receve receve = receve_model.selectByIdStorageJor(storage_jor.getId_sj());
+            receve_model.addReceve(receve.getId_reciver(), storage_jor.getId_sj(), count, date, 0);
         }
 
     }
@@ -353,6 +374,7 @@ public class InterfaceController extends ControllerFX {
         } else if (event.getSource() == btnBuyPage) {
             storages = storage_model.selectAll();
             cbStorageN.setItems(storages);
+            cbStorageE.setItems(storages);
             receivers = receiver_model.selectAll();
             cbReceiverN.setItems(receivers);
             pnlBuy.setStyle(backgroundColor);

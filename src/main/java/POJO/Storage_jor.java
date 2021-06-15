@@ -1,11 +1,26 @@
 package POJO;
 
+import javax.persistence.*;
+
+@NamedQueries({
+        @NamedQuery(name = Storage_jor.NAMED_QUERY_GET_BY_ID_STORAGE, query = "Select e from storage_jor e where e.id_storage =:id_storage")
+})
+@Entity
+@Table(name = "storage_jor")
 public class Storage_jor {
+    public static final String NAMED_QUERY_GET_BY_ID_STORAGE = "Storage.getByStatus";
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_sj;
+    @Column (name = "id_product")
     private int id_product;
+    @Column (name = "id_storage")
     private  int id_storage;
+    @Column (name = "amount")
     private int amount;
+    @Column (name = "price_in_sup")
     private float price_in_sup;
+    @Column (name = "price_in_sale")
     private float price_in_sale;
 
     public Storage_jor() {
@@ -21,6 +36,10 @@ public class Storage_jor {
 
     public int getId_sj() {
         return id_sj;
+    }
+
+    public String getId_sj_str() {
+        return String.valueOf(id_sj);
     }
 
     public void setId_sj(int id_sj) {

@@ -1,7 +1,11 @@
 package POJO;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name = "receve")
 public class Receve {
     private int id_receve;
     private int id_reciver;

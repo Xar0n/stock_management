@@ -3,6 +3,7 @@ package ControllersHIbernate;
 import Base.ControllerHIbernate;
 import POJO.Product;
 import POJO.Receve;
+import POJO.Storage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
@@ -32,7 +33,7 @@ public class ManageProduct extends ControllerHIbernate {
 //    }
 
     //Дефолтное добавдение продукта
-    public Integer addProduct( String name_prod){
+    public Integer addProduct(String name_prod){
         Session session = factory.openSession();
         Transaction tx = null;
         Integer product_id = null;
@@ -49,6 +50,11 @@ public class ManageProduct extends ControllerHIbernate {
             session.close();
         }
         return product_id;
+    }
+
+    public Product findById(int id) {
+        Session session = factory.openSession();
+        return (Product) session.get(Product.class, id);
     }
 
     //Считывагие в консоль
