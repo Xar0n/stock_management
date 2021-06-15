@@ -20,5 +20,6 @@
         <mapping resource = "Suppliers.hbm.xml"/>
         <mapping resource = "Supply.hbm.xml"/>
         <mapping resource = "VIEW_SUPPLY.hbm.xml"/>
+        <mapping resource = "VIEW_RECEVE.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
