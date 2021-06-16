@@ -11,10 +11,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 public class InterfaceController extends ControllerFX {
 
@@ -222,6 +224,15 @@ public class InterfaceController extends ControllerFX {
     ObservableList<Suppliers> suppliers;
     ObservableList<Storage_jor> storage_jors;
 
+
+    UnaryOperator<TextFormatter.Change> integerFilter = change -> {
+        String newText = change.getControlNewText();
+        if (newText.matches("-?([1-9][0-9]*)?")) {
+            return change;
+        }
+        return null;
+    };
+
     public void updateTableStorage() {
         storages = storage_model.selectAll();
         tableStorage.setItems(storages);
@@ -335,7 +346,7 @@ public class InterfaceController extends ControllerFX {
             @Override
             public String toString(Storage_jor storage_jor) {
                 Product product = product_model.findById(storage_jor.getId_product());
-                return storage_jor.getId_sj_str() + "| " + product.getName_prod();
+                return storage_jor.getId_sj_str() + " | " + product.getName_prod();
             }
 
             @Override
@@ -356,6 +367,12 @@ public class InterfaceController extends ControllerFX {
                         ap.getName_sup().equals(string)).findFirst().orElse(null);
             }
         });
+        tfIdStorage.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
+        tfIdReceiver.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
+        tfIdSupplier.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
+        tfCountPE.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
+        tfCountPN.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
+        tfCountSell.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), null, integerFilter));
     }
 
 

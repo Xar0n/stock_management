@@ -160,7 +160,7 @@
             <children>
                 <Pane fx:id="pnlSupplier" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="tfIdSupplier" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                        <TextField fx:id="tfIdSupplier" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-text-fill:#e7e5e5;">
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></TextField>
@@ -197,7 +197,7 @@
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></Button>
-                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                        <TextField fx:id="tfIdStorage" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-text-fill:#e7e5e5;">
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></TextField>
@@ -225,14 +225,20 @@
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></Button>
-                        <Button fx:id="btnViewBuy" layoutX="86.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть закупки" />
-                        <Button fx:id="btnViewSell" layoutX="221.0" layoutY="81.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть продажи" />
+                        <Button fx:id="btnViewBuy" layoutX="63.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть закупки">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
+                        <Button fx:id="btnViewSell" layoutX="212.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleView" text="Посмотреть продажи">
+                            <font>
+                                <Font name="Ebrima" size="13.0" />
+                            </font></Button>
                     </children>
                 </Pane>
 
                 <Pane fx:id="pnlReceiver" prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="tfIdReceiver" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;">
+                        <TextField fx:id="tfIdReceiver" layoutX="590.0" layoutY="38.0" prefHeight="27.0" prefWidth="183.0" promptText="Введите ID" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em; -fx-text-fill:#e7e5e5;">
                             <font>
                                 <Font name="Ebrima" size="13.0" />
                             </font></TextField>
@@ -490,7 +496,7 @@
                                 <Insets bottom="10.0" top="10.0" />
                             </padding>
                         </Label>
-                        <Button fx:id="btnSell" layoutX="58.0" layoutY="497.0" mnemonicParsing="false" onAction="#handleSell" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Закупить">
+                        <Button fx:id="btnSell" layoutX="58.0" layoutY="497.0" mnemonicParsing="false" onAction="#handleSell" style="-fx-background-color: #0d6efd; -fx-text-fill:#e7e5e5;" text="Продать">
                             <font>
                                 <Font size="14.0" />
                             </font>
